@@ -239,12 +239,12 @@ function reporte(mi){
 function selected(mi){
     //document.getElementById('bt').style.display = "inline-block";
     document.getElementById('dropdownMenu1').childNodes[0].nodeValue = mi.innerHTML;
-    var por = "";
+    var por = ""; var ver = '<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />';
     switch(mi.innerHTML){
         case 'Fecha de entrada':
 
             por = "\
-            <div class='row' style='float:left;'> \
+            <div class='row' style=''> \
                 <div class='col-xs-5'>\
                     <div class=input-group>\
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Desde:</span><input class='datepicker form-control' id='desde' data-date-format='mm/dd/yyyy hh:mm'>\
@@ -255,6 +255,9 @@ function selected(mi){
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Hasta:</span><input class='datepicker form-control' id='hasta' data-date-format='mm/dd/yyyy'>\
                     </div>\
                 </div> \
+                <div class='col-xs-2'> \
+                    " + ver + " \
+                </div> \
             </div>";
             //$('.datepicker .form-control').pikaday({ firstDay: 1 });
            
@@ -264,16 +267,16 @@ function selected(mi){
         case "Título":
 
             por = '\
-            <div class="input-group" style="float:left; max-width:400px; margin-right:10px;"><span class="input-group-addon">Título</span>\
+            <div class="input-group" style="float:left; max-width:500px; margin-right:20px;"><span class="input-group-addon">Título</span>\
                 <input type="text" class="form-control" name="titulo" placeholder="Entre el Título">\
-            </div>';
+            </div>'+ ver;
 
             break;
 
         case "Precio":
 
             por = "\
-            <div class='row' style='float:left;'> \
+            <div class='row' style=''> \
                 <div class='col-xs-5'>\
                     <div class=input-group>\
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Desde: $</span><input class='form-control' id='desdep'>\
@@ -284,14 +287,17 @@ function selected(mi){
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Hasta: $</span><input class='form-control' id='hastap'>\
                     </div>\
                 </div> \
+                <div class='col-xs-2'> \
+                    " + ver + " \
+                </div> \
             </div>";
 
             break;
 
         case "Calificación":
 
-        por = "\
-            <div class='row' style='float:left;'> \
+            por = "\
+            <div class='row' style=''> \
                 <div class='col-xs-4'>\
                     <div class=input-group>\
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Desde:</span>\
@@ -306,7 +312,11 @@ function selected(mi){
                         <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>★</span> \
                     </div>\
                 </div> \
+                <div class='col-xs-4'> \
+                    " + ver + " \
+                </div> \
             </div>";
+            //ver = "";
 
             break;
 
@@ -315,7 +325,7 @@ function selected(mi){
             break;
 
     }
-    por+='<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />';
+    //por += ver;
     document.getElementById('informar2').innerHTML = por;
     $('.datepicker').pikaday({ firstDay: 1 });
     
