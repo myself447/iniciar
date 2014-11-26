@@ -1,0 +1,33 @@
+﻿@{
+    
+    Layout = "../_Layout.cshtml";
+    var id = Request.QueryString["Id"];
+    var conexion = Database.Open("disco"); 
+    string query = String.Format("select * from Producto where Id={0}",id);
+    var record = conexion.QuerySingle(query);
+    conexion.Close();
+
+}
+
+
+<h1>@record.Titulo</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="@record.Portada" alt="Caratula" class="img-responsive" />
+        
+    </div>
+    <div class="col-md-6">
+        <div class="detalle">
+            <br />
+            
+                
+                <p>@record.Referencia</p>
+                <p>@record.Descripcion</p>
+                <p>@record.Estrellas</p>
+                <p># Comentarios</p>
+                <p>@record.Precio$ <span class="carrito btn btn-default btn-xs"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>
+                <input value="0" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="sm" data-stars="5" data-glyphicon=0>
+        </div>
+    </div>
+</div>

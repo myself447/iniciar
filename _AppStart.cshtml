@@ -1,0 +1,23 @@
+﻿@using System.Web.Routing;
+
+@{
+RouteTable.Routes.MapWebPageRoute("Legal","~/templates/Legal.cshtml");
+RouteTable.Routes.MapWebPageRoute("Acerca","~/templates/Acerca.cshtml");
+RouteTable.Routes.MapWebPageRoute("Artistas","~/templates/Artistas.cshtml");
+RouteTable.Routes.MapWebPageRoute("Ayuda","~/templates/Ayuda.cshtml");
+RouteTable.Routes.MapWebPageRoute("Inicio","~/Default.cshtml");
+RouteTable.Routes.MapWebPageRoute("Listado","~/templates/Listado.cshtml");
+RouteTable.Routes.MapWebPageRoute("Detalle","~/templates/Detalle.cshtml");
+RouteTable.Routes.MapWebPageRoute("Admin","~/admin_templates/Administrar.cshtml");
+
+PayPal.Profile.Initialize( "robert-facilitator_api1.engineer.com",
+                           "JX8TYEQWGGG8DPVE", 
+                           "AFcWxV21C7fd0v3bYYYRCpSSRl31A1RHlL2c.LmvkD16Za7aMdtvv34i", 
+                           "sandbox"); 
+/* General Adaptive Payments’ properties PayPal.Profile.Language = "en_US"; PayPal.Profile.CancelUrl = "http://www.mystore.com/ohtoobad.cshtml";
+ PayPal.Profile.ReturnUrl = "http://www.mystore.com/thanks.cshtml"; 
+ PayPal.Profile.IpnUrl = "http://www.mystore.com/notifications.cshtml"; 
+ PayPal.Profile.CurrencyCode = "USD";*/
+
+}
+

@@ -1,0 +1,197 @@
+body {
+    max-width: 1000px;
+}
+
+header {
+  
+}
+
+nav {
+    position: relative; 
+}
+
+header nav ul {
+   
+}
+
+section {
+    
+}
+
+footer {
+   text-align: center;
+   margin-top: 15px;
+}
+
+img {
+    
+}
+
+[alt="Caratula"]{
+    
+    border:  2px black solid;
+    border-radius: 10px;
+}
+
+#well {
+    max-width: 240px;
+}
+
+#relleno {
+    max-width: 240px;
+}
+
+#comprado{
+    position:relative; 
+    left:90%;
+    
+}
+
+.fila {
+margin-top: 20px;
+
+}
+
+.fila div .col-xs-5{
+    
+    font-size: small;
+    font-weight: bold;
+}
+
+#filas div div table div {
+    background-color:#fff;
+    padding-left: 15px;
+}
+
+#filas .col-md-6:first-of-type{
+    border-right: solid 1px black;
+}
+
+#filas .col-md-6:last-of-type{
+    padding-left: 30px;
+}
+
+td img {
+max-width: 200px;
+}
+
+.detalle {
+    font-weight: 700;
+    font-size: medium;
+}
+
+.carrito img {
+min-width: 10px;
+max-width: 23px;
+
+}
+
+.carrito{
+    font-weight: bold;
+}
+
+
+#mas-discos{
+    
+    text-align: center;
+    font-size: x-large;
+    font-family: Century;
+    
+}
+
+.carita{
+    text-align: center;
+    color: rgba(252, 161, 3, 1);
+    font-size: 6em;
+    
+}
+
+.paginado{
+    
+    text-align: right;
+}
+
+
+#adm_login {
+    position: relative;
+    left: 25%;
+    display: none;
+    width: 650px;
+}
+
+#adm_login label{
+   font-size: small;
+    
+}
+
+#adm_login input[type="text"],input[type="password"]{
+    
+    height: 23px;
+    border: solid gray 2px;
+    border-radius: 5px;
+    padding-top: 5px;
+    position: relative;
+    top: 3px;
+    font-size: small;
+}
+
+#ver_login{
+    cursor: pointer;
+    /*width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red;*/
+}
+/*radio style starts*/
+
+input[type=radio].css-checkbox {
+							position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+						}
+
+						input[type=radio].css-checkbox + label.css-label {
+							padding-left:24px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						input[type=radio].css-checkbox:checked + label.css-label {
+							background-position: 0 -19px;
+						}
+						label.css-label {
+				background-image:url(../img/csscheckbox.com.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+
+/* radio style ends*/
+
+#info span:first-of-type{
+    margin-right: 30px;
+    
+}
+
+#producto .input-group{
+    margin-bottom: 10px;
+
+}
+
+#producto div:nth-of-type(2) > span:hover, #producto div:nth-of-type(6) ~ div > span:hover{
+    
+    cursor: pointer;
+    border: solid 2px grey;
+    
+}
+
+#producto div:nth-of-type(2) input[type="file"], #producto div:nth-of-type(6) ~ div input[type="file"]{
+    
+    display: none;
+}
+

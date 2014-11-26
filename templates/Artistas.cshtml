@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "../_Layout.cshtml";
+
+    var conexion = Database.Open("disco");
+    string query = String.Format(@"insert into Producto(Titulo,Portada,Precio,Referencia,Descripcion,Estrellas)
+    values('{0}','{1}',{2},'{3}','{4}',{5})","Nueva","portadas/ejemplo.jpg",75,"Ninguna","Temas cambiado",3.5);
+    conexion.Query(query);
+    conexion.Close();
+}
+
+Artista dl momento

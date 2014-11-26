@@ -1,0 +1,65 @@
+﻿@{
+    var accion = Request.Form["accion"].ToString();
+    var archivos = Request.Files;
+    var producto = new Dictionary<string, dynamic>(){ 
+        {"titulo", Request.Form["titulo"]}, 
+        {"precio", Request.Form["precio"]}, 
+        {"ref", Request.Form["ref"]}, 
+        {"desc", Request.Form["desc"]}
+
+    }; 
+    if(accion == "Agregar Producto"){
+        // Guardado de archivos inicia
+        try{
+            var portada = archivos[0];
+            portada.SaveAs(Server.MapPath("../portadas/").ToString() + portada.FileName.ToString());
+            var dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString());
+            for( var i=1; i < Request.Files.Count; i++ ){
+
+               archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName);
+
+            }
+        }catch(Exception f){
+
+            <text>@f.Message.ToString()</text>
+
+        }
+        // Guardado de archivos finaliza
+        
+        // Guardado de datos inicio
+        try{
+        var todb = Database.Open("disco");
+        var fecha = DateTime.Now;
+       string command = String.Format(@"INSERT INTO Producto(Titulo, Portada, Precio, Referencia, Descripcion, Fecha_entrada)values(
+        '{0}', 'portadas/{1}', {2}, '{3}', '{4}', {5})", 
+        producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], 
+        Convert.ToInt64(fecha.Year.ToString()+fecha.Month.ToString()+fecha.Day.ToString() ) );
+       todb.Query(command);
+       todb.Close();
+       }catch(Exception e){
+           
+           <text>@e.Message.ToString()</text>
+       }
+       // Guardado de datos finaliza
+    }
+    else if(accion == "Actulizar Producto"){
+        
+
+
+    }
+  
+}
+
+
+@{
+/*text>@DateTime.Now.ToFileTime()</text>
+<text>@DateTime.FromFileTime(DateTime.Now.ToFileTime()).ToShortDateString()</text>      
+
+<text>@DateTime.Now</text>  
+
+<text>@DateTime.Now.ToFileTimeUtc()</text>  
+<text>@DateTime.Now.ToLocalTime()</text> 
+<text>@DateTime.Now.ToOADate()</text>  
+<text>@DateTime.Now.ToString()</text>  
+<text>@DateTime.Now.ToLongTimeString()</text>*/ 
+}

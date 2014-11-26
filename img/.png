@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<title>CSS Checkbox | CSS Checkbox Generator | CSS Checkbox Style</title>
+	
+	<meta name="keywords" content="CSS Checkbox, CSS Checkbox Style, CSS Checkbox Generator, CSS Checkbox Kits, Checkbox CSS">
+	<meta name="description" content="CSS Checkbox offers 100% Free CSS Checkboxes, a CSS Checkbox Generator and the ability to create and download the perfect CSS Checkbox style.">
+	<link rel="stylesheet" href="style.css" />
+	<meta itemprop="name" content="CSS Checkbox | 100% Free CSS Checkbox Generator | CSS Checkbox Style">
+	<meta itemprop="description" content="CSS Checkbox offers 100% Free CSS Checkboxes, a CSS Checkbox Generator and the ability to create and download the perfect CSS Checkbox style.">
+	<meta itemprop="image" content="http://csscheckbox.com/imgs/square-logo.png">
+	<meta property="og:title" content="CSS Checkbox | CSS Checkbox Generator | CSS Checkbox Style" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://csscheckbox.com" />
+	<meta property="og:image" content="http://csscheckbox.com/imgs/square-logo.png" />
+	
+	<link rel="image_src" href="http://csscheckbox.com/imgs/square-logo.png" />
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.zclip.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+	   $('#htmlcopy').zclip({
+			path:'js/ZeroClipboard.swf',
+			copy:$('#htmlbox').val()
+		});
+	   $('#csscopy').zclip({
+			path:'js/ZeroClipboard.swf',
+			copy: function () {
+			 return $('#cssbox').val();
+			}
+		});
+
+    // The link with ID "copy-dynamic" will copy the current value
+    // of a dynamically changing input with the ID "dynamic"
+
+	});
+	</script>
+	
+	<script type="text/javascript">
+		function hideDiv(divID) {
+		var divClass = $(divID).attr("class");
+			
+			if (divClass=="unhidden")
+			{
+				$(divID).attr("class","hidden");
+			}
+			else
+			{
+				$(divID).attr("class","unhidden");
+			}
+		}
+		
+		function viewCode() {
+			
+			hideDiv("#htmlbox");
+			hideDiv("#cssbox");
+			
+			var linkText = $("#code_btn").text();
+			
+			if (linkText=="View Code")
+			{
+			$("a#code_btn").text("Hide Code");
+			}
+			else
+			{
+			$("a#code_btn").text("View Code");
+			}
+		}
+	</script>
+	<script type="text/javascript" src="js/gen.js"></script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-bf5dfcd6-c023-7a02-1dbd-d7d01d829075", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39116866-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+
+
+<body>
+	<div class="container clearfix">
+		<div class="header small">
+			
+			<table>
+				<tr>
+					<td>
+						<a class="logo" href="http://csscheckbox.com" title="CSS Checkbox">
+							<img src="/imgs/logo-3.png" alt="CSS Checkbox" />
+						</a>
+					</td>
+					<td>
+						<div class="search">
+							<form method="get" action="/search.php" name="searchForm" id="searchForm">
+								<input type="hidden" name="p" id="p" value="0" />
+								<input type="text" name="search_field" id="search_field" onFocus="if(this.value=='Search CSS Checkbox') {this.value='';}" onBlur="if(this.value=='') {this.value='Search CSS Checkbox';}" value="Search CSS Checkbox" />
+								<input type="submit" id="search_submit" value="" />
+							</form>
+						</div>
+						<!--script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- CSS Checkbox Banner -->
+						<!--ins class="adsbygoogle"
+							 style="display:inline-block;width:728px;height:90px"
+							 data-ad-client="ca-pub-2038533317369981"
+							 data-ad-slot="6860429550"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script-->
+					</td>
+				</tr>
+			</table>
+			
+		</div>		<div class="navigation">
+	<!--a href="/">Home</a-->
+	<a href="/css-checkbox-generator.php">CSS Checkbox Generator</a>
+	<a href="/checkboxes.php">CSS Checkboxes</a>
+	<a href="/radio-buttons.php">CSS Radio Buttons</a>
+	<a href="/css-input-generator.php">Text Input Generator</a>
+	<a href="/text-inputs/0/">CSS Text Inputs</a>
+	
+
+	
+</div>		
+		<div class="content">
+			
+			<h1>CSS Radio Button, Checkbox & Input Styling from CSS Checkbox</h1>
+			<div class="holdThePadding">
+		<div class="innerBannerAd">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- CSS Checkbox Banner -->
+						<ins class="adsbygoogle"
+							 style="display:inline-block;width:728px;height:90px"
+							 data-ad-client="ca-pub-2038533317369981"
+							 data-ad-slot="6860429550"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+		</div></div>
+			<p>
+				Welcome to CSS Checkbox! Our website is a great free resource for all things CSS and HTML Form Element Related. On our site you can browse and download
+				hundreds of free <a href="/checkboxes/0/">CSS Checkbox</a>, <a href="/radio-buttons/0/">CSS Radio Button</a> and <a href="/text-inputs/0/">CSS Text Box</a> styles from our various CSS Form element libraries.</p>
+			<p>	You can also user our <a href="/css-checkbox-generator.php">CSS Checkbox Generator</a> to 
+				create CSS Radio Button and Checkbox Styles from your own designs. We have a special <a href="/css-input-generator.php">CSS Text Box Generator</a> for creating INPUT type=text elements styled with CSS only. Look around or download the CSS Checkbox Starter Kit below to get accustomed to our system. <b>Check</b> yo' self before you wreck yo' self!
+			</p>
+			<a class="btn" href="download-package.php" style="margin-bottom:10px; float:right; font-size:24px; margin:5px 5px 0 0;">Download Checkbox Kit</a>
+			<h1>CSS Checkbox Styles - Starter Kit</h1>
+			
+			<h2 class="subtext">
+				Our CSS Checkbox Starter kit includes all 5 Checkbox Collections displayed below. With a variety of CSS Checkbox Styles to use from, your websites and forms can be exciting once more!
+				Using CSS for Checkboxes ensures that your forms look the same across different Web Browsers. Javascript not needed but included if desired.
+			</h2>		
+
+			<div class="cb-styles clearfix">
+			<table class="lite-1">
+				<tr>
+					<th>Light Checkboxes</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox1"  checked="checked"/>
+						<label for="checkbox1" name="checkbox1_lbl" class="css-label lite-green-check">Green Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox2" class="css-checkbox" checked="checked"/>
+						<label for="checkbox2" name="checkbox2_lbl" class="css-label lite-orange-check">Orange Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox3" class="css-checkbox" checked="checked"/>
+						<label for="checkbox3" name="checkbox2_lbl" class="css-label lite-red-check">Red Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox4"  checked="checked"/>
+						<label for="checkbox4" name="checkbox1_lbl" class="css-label lite-gray-check">Gray Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox5" class="css-checkbox" checked="checked"/>
+						<label for="checkbox5" name="checkbox2_lbl" class="css-label lite-blue-check">Blue Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox6" class="css-checkbox" checked="checked"/>
+						<label for="checkbox6" name="checkbox2_lbl" class="css-label lite-cyan-check">Cyan Check</label>
+					</td>
+				</tr>
+			</table>
+			
+				<table class="dark-1">
+				<tr>
+					<th>
+						Dark Checkboxes
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox15" class="css-checkbox" checked="checked"/>
+						<label for="checkbox15" name="checkbox12_lbl" class="css-label dark-plus">Gray Plus</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox16" checked="checked" />
+						<label for="checkbox16" name="checkbox16_lbl" class="css-label dark-plus-cyan">Cyan Plus</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox18" class="css-checkbox" checked="checked"/>
+						<label for="checkbox18" name="checkbox18_lbl" class="css-label dark-plus-orange">Orange Plus</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox17" class="css-checkbox" checked="checked"/>
+						<label for="checkbox17" name="checkbox17_lbl" class="css-label dark-check-cyan">Cyan Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox19" checked="checked" />
+						<label for="checkbox19" name="checkbox19_lbl" class="css-label dark-check-green">Green Check</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox21" class="css-checkbox" checked="checked"/>
+						<label for="checkbox21" name="checkbox21_lbl" class="css-label dark-check-orange">Orange Check</label>
+					</td>
+				</tr>
+			</table>
+			
+			<table class="lite-2">
+				<tr>
+					<th>
+						Light X-Boxes
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox7"  checked="checked"/>
+						<label for="checkbox7" name="checkbox7_lbl" class="css-label lite-x-gray">Gray X</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox8" class="css-checkbox" checked="checked"/>
+						<label for="checkbox8" name="checkbox8_lbl" class="css-label lite-x-green">Green X</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox9" class="css-checkbox" checked="checked"/>
+						<label for="checkbox9" name="checkbox9_lbl" class="css-label lite-x-cyan">Cyan X</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox10" checked="checked" />
+						<label for="checkbox10" name="checkbox10_lbl" class="css-label lite-x-red">Red X</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox11" class="css-checkbox" checked="checked"/>
+						<label for="checkbox11" name="checkbox11_lbl" class="css-label lite-x-orange">Orange X</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox12" class="css-checkbox" checked="checked"/>
+						<label for="checkbox12" name="checkbox12_lbl" class="css-label lite-x-blue">Blue X</label>
+					</td>
+				</tr>
+				</table>
+				
+			
+			<table class="funky">
+				<tr>
+					<th>
+						Funky Checkboxes
+					</th>
+				</tr>				
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox13" />
+						<label for="checkbox13" name="checkbox10_lbl" class="css-label mac-style">Mac Style</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox" id="checkbox33" checked="checked"/>
+						<label for="checkbox33" name="checkbox33_lbl" class="css-label mac-style">Mac Checked</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox14" class="css-checkbox" checked="checked"/>
+						<label for="checkbox14" name="checkbox11_lbl" class="css-label lite-plus">Lite Plus</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox22" class="css-checkbox"/>
+						<label for="checkbox22" name="checkbox22_lbl" class="css-label mario-style">Mario Style</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox222" class="css-checkbox" checked="checked"/>
+						<label for="checkbox222" name="checkbox222_lbl" class="css-label mario-style">Mario Checked</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox252" class="css-checkbox" checked="checked"/>
+						<label for="checkbox252" name="checkbox252_lbl" class="css-label alert-style">Cuidado Box!</label>
+					</td>
+				</tr>
+			</table>
+			</div><!--end cb styles-->
+			
+			<div class="cb-styles clearfix" style="border-top:1px solid #dddddd; background-color:#f0f0f0;">
+			<table class="lite-2">
+				<tr>
+					<th>Classic Checkboxes
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkboxn01" class="css-checkbox med" checked="checked"/>
+						<label for="checkboxn01" name="checkboxn01_lbl" class="css-label med elegant">Sleek Checkbox</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox lrg" id="checkbox_vlad" checked="checked" />
+						<label for="checkbox_vlad" name="checkbox_vlad_lbl" class="css-label lrg vlad">Vlad the Impaler</label>
+					</td>
+				</tr>
+			</table>
+			<table class="lite-2">
+			<tr>
+					<th>&nbsp;
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox_n03" class="css-checkbox" checked="checked"/>
+						<label for="checkbox_n03" name="checkbox_n03_lbl" class="css-label chrome-style">Google Style</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkbox_n04" class="css-checkbox lrg" checked="checked"/>
+						<label for="checkbox_n04" name="checkbox_n04_lbl" class="css-label lrg web-two-style">Web 2.0 Style</label>
+					</td>
+				
+				</tr>
+			</table>
+			<table class="lite-2">
+			<tr>
+					<th>&nbsp;
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox sme" id="checkbox_n02" checked="checked" />
+						<label for="checkbox_n02" name="checkbox_n02_lbl" class="css-label sme depressed">Depressed</label>
+					
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+			</table>
+			<table class="lite-2">
+			<tr>
+					<th>&nbsp;
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" class="css-checkbox lrg" id="checkbox_klaus" checked="checked" />
+						<label for="checkbox_klaus" name="checkbox_klaus_lbl" class="css-label lrg klaus">the Klaus</label>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+			</table>
+			</div><!--end cb styles-->
+			
+			
+			
+			<h1>Recently Added Checkboxes and Radio Buttons</h1>
+			<h2 class="subtext">Check out some of the latest CSS Checkboxes and CSS Radio Buttons added to our CSS Checkbox library!</h2>
+			<div class="cb-styles clearfix" style="background:#f0f0f0;"><table class="lite-2 wide special"><tr><td class="img"><a href="/checkbox/4569/big-blocky-green-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_a8249dd51599c21a81d030947374b723.png); width:27px; height:27px; background-position: 0 -27px;"></div></a></td><td><a href="/checkbox/4569/big-blocky-green-checkbox/">Big Blocky Green Checkbox</a></td><td class="img"><a href="/checkbox/4558/bright-green-lego-block-box/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_de06668a1f80c9724cff487b4a3bc70f.png); width:41px; height:39px; background-position: 0 -39px;"></div></a></td><td><a href="/checkbox/4558/bright-green-lego-block-box/">Bright Green Lego Block Box</a></td><td class="img"><a href="/checkbox/4537/sleazy-orange-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_ee3b0da0291b3ff858de1041b73c8b78.png); width:19px; height:19px; background-position: 0 -19px;"></div></a></td><td><a href="/checkbox/4537/sleazy-orange-checkbox/">Sleazy Orange Checkbox</a></td></tr><tr><td class="img"><a href="/checkbox/4505/green-flag-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_929ce2b61cb1e1747fcea599fa9820b6.png); width:21px; height:21px; background-position: 0 -21px;"></div></a></td><td><a href="/checkbox/4505/green-flag-checkbox/">Green Flag Checkbox</a></td><td class="img"><a href="/checkbox/4498/green-fill-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_82be5bda89fd25e2809e3204ab42ee18.png); width:21px; height:21px; background-position: 0 -21px;"></div></a></td><td><a href="/checkbox/4498/green-fill-checkbox/">Green Fill Checkbox</a></td><td class="img"><a href="/checkbox/4485/straight-gray-x-box/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_76def56ab0c4050f3ef0a05db29bb8d2.png); width:23px; height:23px; background-position: 0 -23px;"></div></a></td><td><a href="/checkbox/4485/straight-gray-x-box/">Straight Gray X Box</a></td></tr><tr><td class="img"><a href="/checkbox/4458/subtle-gray-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_843386d3cb9a4d1c05313c7f23788d43.png); width:25px; height:25px; background-position: 0 -25px;"></div></a></td><td><a href="/checkbox/4458/subtle-gray-checkbox/">Subtle Gray Checkbox</a></td><td class="img"><a href="/checkbox/4342/crazy-green-radio/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_3d85e031438bddbc198e2f74d1aa5618.png); width:26px; height:24px; background-position: 0 -24px;"></div></a></td><td><a href="/checkbox/4342/crazy-green-radio/">Crazy Green Radio</a></td><td class="img"><a href="/checkbox/4269/solid-seafoam-green-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_3136f4c17d41f6147fae3d74c75724da.png); width:24px; height:24px; background-position: 0 -24px;"></div></a></td><td><a href="/checkbox/4269/solid-seafoam-green-checkbox/">Solid Seafoam Green Checkbox</a></td></tr><tr><td class="img"><a href="/checkbox/4258/orange-dot-radio/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_96c3f3e6c8aacf4c73de3d3f50b61e25.png); width:17px; height:17px; background-position: 0 -17px;"></div></a></td><td><a href="/checkbox/4258/orange-dot-radio/">Orange Dot Radio</a></td><td class="img"><a href="/checkbox/4257/iron-throne-checkbox/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_3bc33c197ddcf1c42f3532ffb1adeeb7.png); width:28px; height:28px; background-position: 0 -28px;"></div></a></td><td><a href="/checkbox/4257/iron-throne-checkbox/">Iron Throne Checkbox</a></td><td class="img"><a href="/checkbox/4232/sexy-blue-radio-small/"><div class="spritePreview" style="background-image:url(/checkboxes/u/csscheckbox_efe90bd69ed555dfc25159c1ba05a76c.png); width:16px; height:16px; background-position: 0 -16px;"></div></a></td><td><a href="/checkbox/4232/sexy-blue-radio-small/">Sexy Blue Radio Small</a></td></tr></table></div>
+							<h1>Recent Input Type Text Styles</h1>
+<h2 class="subtext">The latest and greatest styles from our collection of sexy input[type=text] CSS styles.</h2>
+<div class="cb-styles clearfix" style="background:#f0f0f0;"><table class="lite-2 wide textboxtable"><tr class="odd"><td class="textPreview"> <input type="text" value="Gray on Black Terminal CSS Input Type Text" style=" padding:3px; font-size:16px; border-width:2px; font-family:monospace; border-style:solid; border-color:#343434; background-color:#292929; color:#666566;  " > </td><td><a class="btn" href="/css-text-input/11667/gray-on-black-terminal-css-input-type-text/">Download Text Input</a></td></tr><tr><td class="textPreview"> <input type="text" value="Round Pink Glow CSS Input Text" style=" border-color:#cccccc; border-style:solid; font-size:15px; padding:4px; text-align:left; border-radius:5px; border-width:1px; box-shadow: 0px 0px 5px 0px rgba(219,138,207,.75);  " > </td><td><a class="btn" href="/css-text-input/11655/round-pink-glow-css-input-text/">Download Text Input</a></td></tr><tr class="odd"><td class="textPreview"> <input type="text" value="Tiny Green Border CSS Input Type Text" style=" font-size:10px; padding:5px; border-radius:50px; border-color:#eeff00; border-width:1px; border-style:solid; box-shadow: 0px 0px 5px 0px rgba(5,0,5,.44); text-shadow:0px 0px 0px rgba(42,42,42,.75);  " > </td><td><a class="btn" href="/css-text-input/11654/tiny-green-border-css-input-type-text/">Download Text Input</a></td></tr><tr><td class="textPreview"> <input type="text" value="Gold Background CSS Input Type Text" style=" font-size:16px; border-width:1px; border-radius:3px; border-style:solid; background-color:#f29e0c; color:#2e2e2e; border-color:#ffffff; padding:10px; font-weight:bold;  " > </td><td><a class="btn" href="/css-text-input/11626/gold-background-css-input-type-text/">Download Text Input</a></td></tr><tr class="odd"><td class="textPreview"> <input type="text" value="Prussian Blue Border CSS Input Type Text" style=" border-style:solid; padding:8px; font-size:19px; text-align:left; border-width:3px; border-radius:0px; border-color:#116a85;  " > </td><td><a class="btn" href="/css-text-input/11624/prussian-blue-border-css-input-type-text/">Download Text Input</a></td></tr><tr><td class="textPreview"> <input type="text" value="Shades of Gray CSS Input Type Text" style=" padding:3px; font-size:16px; border-width:2px; border-style:solid; border-color:#9b9b9b; color:#9b9b9b; border-radius:6px;  " > </td><td><a class="btn" href="/css-text-input/11622/shades-of-gray-css-input-type-text/">Download Text Input</a></td></tr></table></div>							
+							<div class="smallbannerAd"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- CSS Checkbox Sub Banner -->
+						<ins class="adsbygoogle"
+							 style="display:inline-block;width:728px;height:90px"
+							 data-ad-client="ca-pub-2038533317369981"
+							 data-ad-slot="2445295954"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script></div>							<h1>Latest articles from our CSS Blog</h1>
+<h2 class="subtext">In addition to offering a wide range of free stuff for your HTML and CSS Form Elements, CSS Checkbox has a great blog and knowledge base covering a wide range of CSS topics. Check out the latest below:</h2>
+
+<div id="blogarea" class="hp">
+<div id="folio-row"><div id="cal-icon"><div id="weekday">Sep</div><div id="numday" style="width:49px;">22</div></div><!--end cal-icon--><h2><a href="/article/7/css-checkbox-collection-3a-flat-bright-checkboxes-in-all-colors/">CSS Checkbox Collection: Flat Bright Checkboxes in all colors</a></h2><h3>Tags: <li><!--a href="/category/csscheckbox"-->CSS Checkbox<!--/a--></li><li><!--a href="/category/coloredcheckboxes"-->Colored Checkboxes<!--/a--></li></h3><div id="clearit"></div></div><!--end row--><div id="folio-row"><div id="cal-icon"><div id="weekday">Sep</div><div id="numday" style="width:46px;">10</div></div><!--end cal-icon--><h2><a href="/article/3/why-not-to-use-display-3anone-when-styling-checkboxes-and-form-elements/">Why not to use display:none when styling checkboxes and form elements</a></h2><h3>Tags: <li><!--a href="/category/display:none"-->display:none<!--/a--></li><li><!--a href="/category/stylingformelements"-->styling form elements<!--/a--></li></h3><div id="clearit"></div></div><!--end row--><div id="folio-row"><div id="cal-icon"><div id="weekday">Aug</div><div id="numday" style="width:49px;">5</div></div><!--end cal-icon--><h2><a href="/article/2/css-checkbox-3a-behind-the-code-and-how-it-works/">CSS Checkbox: Behind the Code and How it Works</a></h2><h3>Tags: <li><!--a href="/category/csscheckbox"-->CSS Checkbox<!--/a--></li><li><!--a href="/category/howitworks"-->How It Works<!--/a--></li><li><!--a href="/category/checkboxcss"-->Checkbox CSS<!--/a--></li></h3><div id="clearit"></div></div><!--end row--></div>			
+			<h1>CSS Checkbox Kit Creator</h1>
+			<h2 class="subtext">Use this CSS Checkbox Kit Creator to create CSS Checkbox Kits from our Pre-Fabricated Styles, or just copy and paste checkbox code straight into your website. CSS Checkbox Generator and CSS Checkbox Kits are both 100% free to use.</h2>
+			<div class="generator">
+				<form action="kits.php" method="post" name="gen_form" id="gen_form">
+				<div class="selector">
+					<h2>Checkbox CSS Style</h2>
+					<div class="fake-dropdown">
+					<select name="style_selector" id="style_selector" onChange="generateCb();">
+						<option value="dark-check-green">Dark Checkbox - Green Check</option>
+						<option value="dark-check-cyan">Dark Checkbox - Cyan Check</option>
+						<option value="dark-check-orange">Dark Checkbox - Orange Check</option>
+						<option value="chrome-style">NEW - Google Style Checkbox</option>
+						<option value="lrg web-two-style">NEW - Web 2.0 Style</option>
+						<option value="med elegant">NEW - Sleek CSS Checkbox</option>
+						<option value="sme depressed">NEW - Depressed Checkbox</option>
+						<option value="dark-plus">Dark Checkbox - Gray Plus</option>
+						<option value="dark-plus-cyan">Dark Checkbox - Cyan Plus</option>
+						<option value="dark-plus-orange">Dark Checkbox - Orange Plus</option>
+						<option value="lite-green-check">Light Checkbox - Green Check</option>
+						<option value="lite-orange-check">Light Checkbox - Orange Check</option>
+						<option value="lite-cyan-check">Light Checkbox - Cyan Check</option>
+						<option value="lite-blue-check">Light Checkbox - Blue Check</option>
+						<option value="lite-gray-check">Light Checkbox - Gray Check</option>
+						<option value="lite-red-check">Light Checkbox - Red Check</option>
+						<option value="lite-x-red">Light X-box - Red X</option>
+						<option value="lite-x-orange">Light X-box - Orange X</option>
+						<option value="lite-x-blue">Light X-box - Blue X</option>
+						<option value="lite-x-cyan">Light X-box - Cyan X</option>
+						<option value="lite-x-green">Light X-box - Green X</option>
+						<option value="lite-x-gray">Light X-box - Gray X</option>
+						<option value="lite-plus">Light Checkbox - Lite Plus</option>
+						<option value="mac-style">Funky Checkbox - Mac Style</option>
+						<option value="mario-style">Funky Checkbox - Mario Style</option>
+						<option value="alert-style">Funky Checkbox - Cuidado Box!</option>
+					</select>
+					</div><!--end fake dropdown-->
+				</div>
+				<div class="preview">
+				<h2>Checkbox Preview</h2>
+				<table>
+				<tr>
+				<td>
+					<input id="demo_box_1" class="css-checkbox" type="checkbox" />
+					<label for="demo_box_1" id="demo_lbl_1" class="css-label dark-check-green">Option #1</label>
+				</td>
+		
+				<td>
+					<input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
+					<label for="demo_box_2" id="demo_lbl_2" class="css-label dark-check-green">Selected Option</label>
+				</td>
+			
+				<td>
+					<input id="demo_box_3" class="css-checkbox" type="checkbox" />
+					<label for="demo_box_3" id="demo_lbl_3" class="css-label dark-check-green">Option #3</label>
+				</td>
+				</tr>
+				</table>
+				</div>
+				
+				<div class="gen-controls">
+					<a class="btn" href="javascript:$('#gen_form').submit();">Download Checkbox Kit</a>
+					<a class="btn" href="javascript:viewCode()" id="code_btn">View Code</a>
+				</div>
+				
+				<div class="code-area clearfix">
+					<div class="panel">
+						<a class="btn" id="htmlcopy">Copy HTML to Clipboard</a>
+						<h3>The HTML</h3>
+						<textarea name="htmlbox" id="htmlbox" class="hidden">
+					<input id="demo_box_1" class="css-checkbox" type="checkbox" />
+					<label for="demo_box_1" name="demo_lbl_1" class="css-label">Option #1</label>
+					&lt;!-- Checkbox powered by CssCheckbox.com --&gt
+					
+					<input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
+					<label for="demo_box_2" name="demo_lbl_2" class="css-label">Selected Option</label>
+					&lt;!-- Checkbox powered by CssCheckbox.com --&gt
+					
+					<input id="demo_box_3" class="css-checkbox" type="checkbox" />
+					<label for="demo_box_3" name="demo_lbl_3" class="css-label">Option #3</label>
+					&lt;!-- Checkbox powered by CssCheckbox.com --&gt
+						</textarea>
+					</div>
+					<div class="panel">
+						<a class="btn" id="csscopy">Copy CSS to Clipboard</a>
+						<h3>The CSS</h3>
+						<textarea name="cssbox" id="cssbox" class="hidden">input[type=checkbox].css-checkbox {
+							  position: absolute; 
+							overflow: hidden; 
+							clip: rect(0 0 0 0); 
+							height:1px; 
+							width:1px; 
+							margin:-1px; 
+							padding:0;
+							border:0;
+						}
+
+						input[type=checkbox].css-checkbox + label.css-label {
+							padding-left:20px;
+							height:15px; 
+							display:inline-block;
+							line-height:15px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:15px;
+							vertical-align:middle;
+							cursor:pointer;
+						}
+
+						input[type=checkbox].css-checkbox:checked + label.css-label {
+							background-position: 0 -15px;
+						}
+						
+						.css-label{
+							background-image:url(http://csscheckbox.com/checkboxes/dark-check-green.png);
+						}
+						</textarea>
+					</div>
+				</div>
+			</form>
+			</div><!--end generator-->
+			<h1>Have something different in mind? We take suggestions!</h1>
+			<div class="suggestion">
+				<p style="margin:0; padding:10px 10px; font-size:14px; line-height:18px;"><b>Got an idea for an awesome CSS Checkbox?</b> E-mail us at <a style="color:teal;" href="mailto:info@csscheckbox.com">info@csscheckbox.com</a> with your ideas, specs or screenshots!</p>
+			</div>
+			
+		</div><!--end content-->
+		<div class="sidebar">
+			
+			<h1>Our Loving Sponsor</h1>
+			<div class="sidebarAd">
+			<!--script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			
+			<ins class="adsbygoogle"
+				 style="display:inline-block;width:300px;height:250px"
+				 data-ad-client="ca-pub-2038533317369981"
+				 data-ad-slot="5102664759"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script-->
+			
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- CSS Checkbox Extrawide Sidebar Ad -->
+			<ins class="adsbygoogle"
+				 style="display:inline-block;width:336px;height:280px"
+				 data-ad-client="ca-pub-2038533317369981"
+				 data-ad-slot="8123935953"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			
+			</div>
+			
+			<h1>Css Radio Button Generator</h1><p style="padding-right:15px;">Create your own styles from your own designs! Check out our CSS Radio Button and Checkbox Generator to create unique checkbox styles designed by you.</p><a class="btn" href="/css-checkbox-generator.php" style="margin-bottom:10px;">Use Generator</a>			
+			 
+			 
+			
+			
+			<h1>CSS Checkbox Styling</h1>
+			<p>Making beautiful CSS for checkboxes is easy with CSS Checkbox!</p>
+			<p style="padding-right:15px;">
+			CSS Checkbox offers 100% Free CSS Checkbox styles and kits for all your web projects. Javascript is not needed to use CSS Checkbox. CSS Checkbox also offers
+			a free CSS and HTML checkbox generator that dynamically creates checkbox or radio button 
+			code for your websites and lets you download custom CSS Radio Buttons and Checkbox kits.
+			</p>
+			 
+			 <h1>Cross Browser Checkbox</h1>
+			 <p>CSS Checkbox is Cross Browser Compatible</p>
+			 <table>
+				<tr>
+					<td><img src="/imgs/browser-ie.png" alt="Internet Explorer Compatible" /></td>
+					<td><img src="/imgs/browser-gc.png" alt="Google Chrome Compatible" /></td>
+					<td><img src="/imgs/browser-as.png" alt="Safari Compatible" /></td>
+					<td><img src="/imgs/browser-mf.png" alt="Firefox Compatible" /></td>
+				</tr>
+			 </table>
+			 
+			 
+			<h1>Support Us</h1>
+			<form style="text-align:center;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="C5D8U4EMDUE8U">
+			<input style="margin:10px;margin-left:12px;" type="image" src="http://csscheckbox.com/imgs/donate-button.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+
+			<div style="width:100%; text-align:center;">
+			<span class='st_facebook_large' displayText='Facebook'></span>
+			<span class='st_twitter_large' displayText='Tweet'></span>
+			<span class='st_email_large' displayText='Email'></span>
+			<span class='st_googleplus_large' displayText='Google +'></span>
+			</div>
+			 
+		</div>
+			</div><!--end container-->
+	<div class="footerlinks" style="text-align:center; color:white; padding-top:3px;">
+		&copy;2012-2014 CSSCHECKBOX.COM | <a href="/radio-buttons/0/">CSS Radio Button</a> Library | <a href="/css-input-generator.php">CSS Text Input Generator</a> |
+		<a href="/blog/">CSS Blog</a>
+	</div>
+</body>
+
+
+
+</html>
+
+

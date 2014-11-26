@@ -1,0 +1,519 @@
+﻿@{
+    //Inserting
+    string con = String.Format(@"Data Source={0}App_Data\disco.sdf",AppDomain.CurrentDomain.BaseDirectory);
+    var conexion = Database.OpenConnectionString(con);
+    string query = String.Format(@"insert into Producto(Titulo,Portada,Precio,Referencia,Descripcion,Estrellas)
+    values('{0}','{1}',{2},'{3}','{4}',{5})","Romanticada","portadas/ejemplo.jpg",200,"Ninguna","Temas romanticos",4.5);
+    conexion.Query(query);
+    conexion.Close();
+
+
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<!--######################################################################-->
+<div class="row" id="filas">
+    <div class="col-md-6">
+        @for(var i=1;i<4;i++){
+            
+        
+        <div>
+            <table>
+                <tr>
+                    <td><img src="img/default.jpg" alt="Caratula" class="img-responsive" style="max-width: 200px;" /></td>
+                    <td>
+                        <div>
+                            @data.Rows[i].Value.Titulo<br />
+                            @data.Rows[i].Value.Estrellas <br />
+                            @data.Rows[i].Value.Precio$ <span class="carrito btn btn-default btn-xs"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
+                            
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input id="estrellas1" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" data-glyphicon=0></td>
+                    <td># Comentarios </td>
+                </tr>
+            </table>
+        </div>
+}
+       
+    </div>
+    <div class="col-md-6">
+        @for(var j=4;j<7;j++){
+        <div>
+            <table>
+                <tr>
+                    <td><img src="img/default.jpg" alt="Caratula" class="img-responsive" style="max-width: 200px;" /></td>
+                    <td>
+                        <div>
+                            @data.Rows[j].Value.Titulo<br />
+                            @data.Rows[j].Value.Estrellas <br />
+                            @data.Rows[j].Value.Precio$ <span class="carrito btn btn-default btn-xs"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
+                            
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    
+                </tr>
+            </table>
+             
+        </div>
+<input id="estrellas"  value="5" type="number" class="rating" style="height: 45px;" min="0" max="5" step=0.5 data-container-class='text-left' data-size="sm" data-stars="1" data-glyphicon=0>
+}
+    </div>
+</div>
+<input id="estrellas"  value="0" type="number" class="rating" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
+
+@*<script type="text/javascript">
+
+    window.location.href = "hola";
+</script>
+
+        <h1>Soy Ayuda D:</h1>
+       
+
+     <form>
+    <input id="input-2b" type="number" class="rating" min="0" max="5" step="0.5" data-size="xl" data-symbol="&#xe005;" data-default-caption="{rating} hearts" data-star-captions="{}" data-glyphicon=0>
+    <br>
+    <input id="input-21a" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xl" data-glyphicon=0 >
+    <br>
+    <input id="input-21b" value="4" type="number" class="rating" min=0 max=5 step=0.2 data-size="lg" data-glyphicon=0>
+    <br>
+    <input id="input-21c" value="0" type="number" class="rating" min=0 max=8 step=0.5 data-size="xl" data-stars="8" data-glyphicon=0>
+    <br>
+    <input id="input" value="2" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm" data-glyphicon=0>
+    <br>
+    <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" data-glyphicon=0>
+    <br>
+    <input id="input-21f" value="0" type="number" min=0 max=5 step=0.1 data-size="md" data-glyphicon=0>
+    <br>
+    <input id="input-2ba" type="number" class="rating" min="0" max="5" step="0.5" data-stars=5
+    data-symbol="&#xe005;" data-default-caption="{rating} hearts" data-star-captions="{}">
+    <br>
+    <input id="input-22"  value="0" type="number" class="rating" min="0" max="5" step=0.5 data-rtl=1 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
+    <div class="clearfix"></div>
+    
+    @*<div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+</form>*@
+
+
+/*-------LOGIN STARTS HERE -------*/
+/* Login Container (default to float:right) */
+#loginContainer {
+    position:absolute;
+    left: 10px;
+    top: 25px;
+    float:right;
+    font-size:12px;
+   /* -ms-transform: rotate(270deg);  IE 9 */
+  /*  -webkit-transform: rotate(270deg);  Chrome, Safari, Opera */
+   /* transform: rotate(270deg);*/
+    z-index: 40;
+}
+
+/* Login Button */
+#loginButton { 
+    display:inline-block;
+    float:right;
+    text-decoration: none;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    position:relative;
+    z-index:30;
+    cursor:pointer;
+}
+
+#loginButton span img{ max-width: 40px; }
+
+#signupButton { 
+    display:inline-block;
+    float:right;
+     
+     
+    border-radius:7px;
+    -moz-border-radius:7px;
+    position:relative;
+    z-index:50;
+    cursor:pointer;
+}
+/* Login Button Text */
+#loginButton span {
+    color:#445058; 
+    font-size:14px; 
+    font-weight:bold; 
+    text-shadow:1px 1px #fff; 
+    padding:7px 29px 9px 10px;
+    
+    display:block
+}
+
+/*#loginButton:focus {
+     border-width: 1px;
+     border-style:solid;
+     /*border-color: #bbb;
+     border-bottom: thin solid #F7E3BE;
+}*/
+
+#loginContainer:focus{
+      background-color:#F7E3BE;   
+}
+
+/* Login Box */
+#loginBox {
+    position:absolute;
+    top:34px;
+    left:0;
+    display:none;
+    z-index:29;
+}   
+
+/* Login Form */
+#loginForm {
+    width:248px; 
+    border:1px solid #899caa;
+    border-radius:3px 0 3px 3px;
+    -moz-border-radius:3px 0 3px 3px;
+    margin-top:-1px;
+    background:#F7E3BE;
+    padding:6px;
+}
+#loginForm fieldset {
+    margin:0 0 12px 0;
+    display:block;
+    border:0;
+    padding:0;
+}
+
+fieldset#body {
+    background:#fff;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    padding:10px 13px;
+    margin:0;
+}
+
+#loginForm #checkbox {
+    width:auto;
+    margin:1px 9px 0 0;
+    float:left;
+    padding:0;
+    border:0;
+    *margin:-3px 9px 0 0; /* IE7 Fix */
+}
+
+#signupForm #checkbox {
+    width:auto;
+    margin:1px 9px 0 0;
+    float:left;
+    padding:0;
+    border:0;
+    *margin:-3px 9px 0 0; /* IE7 Fix */
+}
+
+#body label {
+    color:#3a454d;
+    margin:9px 0 0 0;
+    display:block;
+    float:left;
+}
+
+#loginForm #body fieldset label {
+    display:block;
+    float:none;
+    margin:0 0 6px 0;
+}
+
+
+/* Default Input */
+#loginForm input {
+    width:92%;
+    border:1px solid #899caa;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    color:#3a454d;
+    font-weight:bold;
+    padding:8px 8px;
+    box-shadow:inset 0px 1px 3px #bbb;
+    -webkit-box-shadow:inset 0px 1px 3px #bbb;
+    -moz-box-shadow:inset 0px 1px 3px #bbb;
+    font-size:12px;
+}
+/* Buton de acceso */
+#loginForm #login {
+    width:auto;
+    float:left;
+    
+    color:#fff;
+    padding:7px 10px 8px 10px;
+    text-shadow:0px -1px #278db8;
+    border:1px solid #339cdf;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    margin:0 12px 0 0;
+    cursor:pointer;
+    *padding:7px 2px 8px 2px; /* IE7 Fix */
+}
+
+/* Forgot your password */
+#loginForm span {
+    text-align:center;
+    display:block;
+    padding:7px 0 4px 0;
+}
+
+#loginForm span a {
+    color:#3a454d;
+    text-shadow:1px 1px #fff;
+    font-size:12px;
+}
+
+input:focus {
+    outline:none;
+}
+/*-------LOGIN ENDS HERE -------*/
+  <div id="loginContainer">
+ 			<a href="#" id="loginButton"><span><img src="img/white-key-hi.png" /></span><em></em></a>
+             <div id="loginBox"> <br />               
+                <div id="loginForm">
+                    <fieldset id="body">
+                        <fieldset>
+                            <label for="admin">Admin</label>
+                            <input type="text" name="admin" id="admin" />
+                        </fieldset>
+                        <fieldset>
+                            <label for="password">Contraseña</label>
+                            <input type="password" name="password" id="password" />
+                        </fieldset>
+
+                        <input type="button" id="login" value="Accesar" class="btn btn-warning btn-xs"/>
+                    </fieldset>
+                <span><a href="#">¿Olvidates tu contraseña?</a></span>
+                </div>
+            </div>
+ 		</div>
+    //Start Login
+
+    $(function() {
+    var button = $('#loginButton');
+    var box = $('#loginBox');
+    var form = $('#loginForm');
+   
+    button.removeAttr('href');
+    button.mouseenter(function(login) {
+        box.toggle();
+        button.toggleClass('active');
+    });
+      button.mouseleave(function(login) {
+        box.toggle();
+        button.toggleClass('active');
+    });
+      box.mouseenter(function()
+      {
+              box.toggle();
+        button.toggleClass('active');
+      });
+       box.mouseleave(function()
+      {
+              box.toggle();
+        button.toggleClass('active');
+      });
+    form.mouseup(function() { 
+        return false;
+    });
+    $(this).mouseup(function(login) {
+            
+        if(!($(login.target).parent('#loginButton').length > 0)) {
+            button.removeClass('active');
+            box.hide();
+        }
+    });
+});
+
+<!-- Button trigger modal -->
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+              Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Modal-->
+
+
+  //alert($('#rReporte').prop('checked'));
+    /* var con = new XMLHttpRequest();
+
+    con.onreadystatechange = function () {
+    if (con.readyState == 4 && con.status == 200) {
+    var XML = con.responseText;
+    var result = XML;
+    alert(result);
+    }
+
+    }
+    var consulta = $('#rConsulta').prop('checked'); var reporte = $('#rReporte').prop('checked');
+    var url = "admin_templates/Informe.cshtml?consulta=" + consulta + "&reporte=" + reporte;
+    con.open("GET", url, true);
+    con.send();*/
+
+
+
+/*$("#producto div:nth-of-type(6) ~ div > span").click(function () {
+    alert($(this).attr("id"));
+    $("input[name=busqueda" + $(this).attr("id") + "]").click();
+
+});*/
+
+/*$("#producto div:nth-of-type(6) ~ div > input[type=file]").change(function () {
+    var x = String($(this).attr("name")); x = x.substring(8);  
+    var number = parseInt(x) + 1; //alert(String(number));
+    var busqueda = "busqueda" + String(number);
+    $("#" + $(this).attr("name")).attr("value", $(this).val());
+
+    $("#producto").append(
+    "<div class='input-group'> \
+        <input type='text' class='form-control' id='" + busqueda + "' placeholder='Busque Grabación'> \
+        <input type='file' name='" + busqueda + "' onchange='cambio(this);'> \
+        <span class='input-group-addon' id='" + number + "' onclick='grabs(this);'><span class='glyphicon glyphicon-search'></span></span> \
+    </div>"
+    );
+
+});*/
+
+@* ajax post *@
+
+function up(){
+    var form = document.getElementById('file-form');
+var fileSelect = document.getElementById('file-select');
+var uploadButton = document.getElementById('upload-button');
+
+form.onsubmit = function (event) {
+    event.preventDefault();
+
+    // The rest of the code will go here...
+}
+
+
+
+// Get the selected files from the input.
+var files = fileSelect.files;
+
+// Create a new FormData object.
+var formData = new FormData();
+
+
+// Loop through each of the selected files.
+for (var i = 0; i < files.length; i++) {
+  var file = files[i];
+
+  // Check the file type.
+  if (!file.type.match('image.*')) {
+    continue;
+  }
+
+  // Add the file to the request.
+  formData.append('photos[]', file, file.name);
+  //alert(file + " " + file.name);
+}
+
+// Files
+/*formData.append("whatever", file, filename);
+
+// Blobs
+//formData.append(name, blob, filename);
+
+// Strings
+//formData.append(name, value);  */
+
+// Set up the request.
+var xhr = new XMLHttpRequest();  
+
+
+// Open the connection.
+xhr.open('POST', 'admin_templates/TestUpload.cshtml', true);
+
+// Set up a handler for when the request finishes.
+xhr.onload = function () {
+    if (xhr.status === 200) {
+        // File(s) uploaded.
+        uploadButton.innerHTML = 'Upload';
+        document.getElementById("up").innerHTML = "hecho";
+        alert(xhr.responseText);
+    } else {
+        alert('Ocurrió un Error');
+    }
+};
+
+// Send the Data.
+xhr.send(formData);
+}
+
+@* ajax jquery + json  *@
+
+function add_update(element){
+    var accion = "";
+    if(element.value=="Agregar Producto"){
+
+        accion = "guardar";
+        
+    }
+    else if(element.value=="Actualizar Producto"){
+
+        accion = "actualizar";
+    }
+    //var files = new Array(document.querySelectorAll("#producto div input[name=ruta]"));
+    var files =  document.querySelectorAll("#producto div input[name=ruta]"); //alert(files);
+    var archivos = {};
+    for (var i = 0; i < files.length;i++ ){
+        
+        archivos[String.fromCharCode(i+97)] = files[i].value; 
+        //alert(archivos[i].value);
+        
+    } alert(JSON.stringify(archivos)); //alert(String(archivos));
+    $.ajax({
+        url: "admin_templates/CRUD.cshtml",
+        type: "POST",
+        //contentType: "charset=utf-8; charset=UTF-8;",
+        dataType: "HTML",
+        data: { "titulo": $("input[name=titulo]").val(), "desc": $("#desc").val(), "portada": $("input[name=portada]").val(),
+            "precio": $("input[name=precio]").val(), "ref": $("#ref").val(), "files": JSON.stringify(archivos),"buscar":$("#buscar").val() ,"accion": accion},
+       // processData: false,
+        success: function (content) {
+            alert(content);
+        }
+    });
+
+}

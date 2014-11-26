@@ -1,0 +1,40 @@
+﻿
+@{
+    
+
+bool consulta = Convert.ToBoolean(Request.QueryString["consulta"]);
+bool reporte = Convert.ToBoolean(Request.QueryString["reporte"]);
+
+/*if(consulta==true){
+
+    Write("Consultando");
+
+}else if(reporte==true){
+
+   Write("Reportando");
+}*/
+
+
+}
+
+
+
+
+@if(consulta==true){
+
+    <text>
+        <strong>Write</strong>
+    </text>
+
+}else if(reporte==true){
+
+     <text> 
+        Writemmmm
+    </text>
+}
+
+@{
+    <text>@Request.QueryString["fecha"]</text>
+    <text>@Request.QueryString["fecha"].AsDateTime()</text>
+
+}

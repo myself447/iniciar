@@ -1,0 +1,77 @@
+﻿@{
+    
+    Layout = "../_Layout.cshtml";
+    var conexion = Database.Open("disco"); 
+    var pagina = Request.QueryString["pagina"];
+    var offset=7;
+    if(pagina.AsInt()!=1){ offset=(pagina.AsInt()*4)+7; } 
+    string query = String.Format("select * from Producto order by Id desc offset {0} rows fetch next 8 rows only",offset);
+    var records = conexion.Query(query);
+    var num = conexion.QuerySingle("select COUNT(*) from Producto");
+    int limite=num[0]-7;
+    conexion.Close();
+    dynamic[] lista = new dynamic[records.Count()];
+    lista = records.ToArray();
+    int desde=0;
+    int hasta=5;
+    int pag = 0;
+    int paginaI = pagina.AsInt();
+    float paginaF = pagina.AsFloat();
+    var mantisa = ((paginaF/5)-(paginaI/5));
+    if( mantisa==0.0f && paginaI!=1){desde=-1; pag=-1;}
+
+    }
+<!--#########################################################################################-->
+<p>registros: @limite</p>
+
+
+
+@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite)
+
+@for(var i=0;i<Math.Round(lista.Count()/2.0);i++){
+<div class="row fila">
+    <div class="col-md-6" style="padding:0px; margin:0px;">
+        <div class="col-xs-7">
+            <a href="Detalle?Id=@lista.ElementAt(i).Id"><img src="@lista.ElementAt(i).Portada" alt="Caratula" class="img-responsive" style="max-width: 170px;" /></a>
+            <input value="0" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
+        </div>
+        
+        <div class="col-xs-5">
+            @lista.ElementAt(i).Referencia<br />
+            @lista.ElementAt(i).Titulo <br />
+            @lista.ElementAt(i).Precio$ <span class="carrito btn btn-default btn-xs" name="@lista.ElementAt(i).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
+            <span name="@String.Format("{0}{1}",lista.ElementAt(i).Id,lista.ElementAt(i).Id)" hidden>@MyHelpers.PaypalButton(lista.ElementAt(i).Titulo, (float)lista.ElementAt(i).Precio)</span>
+            # Comentarios
+        </div>
+        
+        
+    </div>
+    @try{
+        var j = (int)Math.Round((lista.Count())/2.0);
+        double precio = lista.ElementAt(i+j).Precio;
+    <div class="col-md-6" style="padding:0px; margin:0px;">
+        <div class="col-xs-7" >
+            <a href="Detalle?Id=@lista.ElementAt(i+j).Id"><img src="@lista.ElementAt(i+j).Portada" alt="Caratula" class="img-responsive" style="max-width: 170px;" /></a>
+            <input value="0" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
+            
+        </div>
+        
+        <div class="col-xs-5">
+            @lista.ElementAt(i+j).Referencia<br />
+            @lista.ElementAt(i+j).Titulo <br />
+            @precio<text>$</text> <span class="carrito btn btn-default btn-xs" name="@lista.ElementAt(i+j).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
+            <span name="@String.Format("{0}{1}",lista.ElementAt(i+j).Id,lista.ElementAt(i+j).Id)" hidden>@MyHelpers.PaypalButton(lista.ElementAt(i+j).Titulo, (float)lista.ElementAt(i+j).Precio)</span>
+            <text> # Comentarios</text><br />
+            
+        </div>
+    </div>
+}catch(Exception e){
+                
+    <h1 class="carita">☺</h1>
+            }
+
+</div>
+}
+@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite)
+<!--#########################################################################################-->
+

@@ -1,0 +1,46 @@
+﻿
+
+@helper MakeNote(string content) {
+  <div class="note" 
+       style="border: 1px solid black; width: 90%; padding: 5px; margin-left: 15px;">
+    <p>
+      <strong>Note</strong>&nbsp;&nbsp; @content
+    </p>
+  </div>
+}
+
+
+@helper Paginado(int desde,int hasta,int pag,int paginaI, float paginaF,int limite){
+
+<div class="paginado">
+    @if(paginaI!=1){
+    <a href="Listado?pagina=@(paginaI-1)">Anterior |</a>
+        }
+    @for(var i=desde;i<=hasta+pag;i++){ 
+        
+        if(i==0 && paginaI<5){ continue; }
+            var m = paginaF/5;
+            m=(int)m*5; 
+            m=m+i; 
+            
+            if(paginaI==m){<a href="Listado?pagina=@m" style="color: #ff006e" >@m | </a>}
+            else{ <a href="Listado?pagina=@m">@m | </a> }
+     if(limite<m*8){break;}                                                   
+     } 
+    @if(paginaI*8<limite){
+    <a href="Listado?pagina=@(paginaI+1)">Siguiente</a>
+    }
+</div>
+
+}
+
+@functions{
+   public static HtmlString PaypalButton(string producto, float precio){
+    var payPalButton = PayPal.ButtonManager.AddToCartButton.Create( business : "robert-facilitator@engineer.com ",
+                                                                    itemName : producto, 
+                                                                     amount : precio.ToString()); 
+    HtmlString payPalButtonHtml = new HtmlString(payPalButton.WebSiteCode);
+    return payPalButtonHtml;
+}
+
+}
