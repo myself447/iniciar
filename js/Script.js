@@ -53,7 +53,9 @@ $('.datepicker').pikaday({ firstDay: 1 });
 
 function informes() {
 
-
+    var inputs = document.querySelectorAll("#informar2 input");
+    var input = {};
+    for(var i=0;i<inputs.length-1;i++){  input[i] = inputs[i].value;  }
 
     var consulta = $('#rConsulta').prop('checked'); var reporte = $('#rReporte').prop('checked');
     $.ajax({
@@ -233,15 +235,33 @@ function consulta(){
 
 function reporte(mi){
 
-    document.getElementById('por').style.display = "inline-block";
+    document.getElementById('por').style.display = "none";
+    document.getElementById('informar').innerHTML = "";
+    document.getElementById('informar2').innerHTML = "\
+            <div class='row' style=''> \
+                <div class='col-xs-5'>\
+                    <div class=input-group>\
+                        <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Desde:</span><input class='datepicker form-control' id='desde' data-date-format='mm/dd/yyyy hh:mm'>\
+                    </div>\
+                </div> \
+                <div class='col-xs-5'>\
+                    <div class=input-group>\
+                        <span class=input-group-addon style='font-size: 1.1em; font-weight: bold;'>Hasta:</span><input class='datepicker form-control' id='hasta' data-date-format='mm/dd/yyyy'>\
+                    </div>\
+                </div> \
+                <div class='col-xs-2'> \
+                    " + '<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />' + " \
+                </div> \
+            </div>";
 }
 
 function selected(mi){
     //document.getElementById('bt').style.display = "inline-block";
+    //alert( );
     document.getElementById('dropdownMenu1').childNodes[0].nodeValue = mi.innerHTML;
     var por = ""; var ver = '<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />';
     switch(mi.innerHTML){
-        case 'Fecha de entrada':
+        case  "Fecha de entrada":
 
             por = "\
             <div class='row' style=''> \
@@ -261,7 +281,6 @@ function selected(mi){
             </div>";
             //$('.datepicker .form-control').pikaday({ firstDay: 1 });
            
-
             break;
 
         case "Título":
