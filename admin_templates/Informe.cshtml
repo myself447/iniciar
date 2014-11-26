@@ -1,4 +1,5 @@
 ﻿
+@using Newtonsoft.Json;
 @{
     
 
@@ -34,7 +35,23 @@ bool reporte = Convert.ToBoolean(Request.QueryString["reporte"]);
 }
 
 @{
-    <text>@Request.QueryString["fecha"]</text>
-    <text>@Request.QueryString["fecha"].AsDateTime()</text>
-
+    //<text>@Request.QueryString["fecha"]</text>
+   // <text>@Request.QueryString["fecha"].AsDateTime()</text>
+   var inputs = Request.QueryString["inputs"];
+   var js = new JsonTextReader(new StringReader(inputs));
+   var son = @JsonConvert.DeserializeObject(inputs);
+   //var b = son.b;
+   string[] input = new string[6]; 
+   int i; 
+   i=0;
+   //input[i]="";
+   /*while(js.Read()){
+        input[i]="lll"; 
+        //var t = js.Value;
+         i++; 
+         <text>@js.Value</text>
+        }
+    <text>@js</text>*/
+    <text>@inputs</text>
 }
+

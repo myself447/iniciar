@@ -55,14 +55,14 @@ function informes() {
 
     var inputs = document.querySelectorAll("#informar2 input");
     var input = {};
-    for(var i=0;i<inputs.length-1;i++){  input[i] = inputs[i].value;  }
+    for(var i=0;i<inputs.length-1;i++){  input[String.fromCharCode(i+97)] = inputs[i].value;  }
 
     var consulta = $('#rConsulta').prop('checked'); var reporte = $('#rReporte').prop('checked');
     $.ajax({
         type: "GET",
         url: "admin_templates/Informe.cshtml",
         dataType: "html",
-        data: { "consulta": consulta, "reporte": reporte, "fecha":$("#desde").val() },
+        data: { "consulta": consulta, "reporte": reporte, "inputs": JSON.stringify(input) },
         success: function (html) {
 
             $('#informe').html((html));
