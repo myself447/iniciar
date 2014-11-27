@@ -52,7 +52,7 @@ $('.datepicker').pikaday({ firstDay: 1 });
 
 
 function informes() {
-
+    var selection = document.getElementById('dropdownMenu1').childNodes[0].nodeValue;
     var inputs = document.querySelectorAll("#informar2 input");
     var input = {};
     for(var i=0;i<inputs.length-1;i++){  input[String.fromCharCode(i+97)] = inputs[i].value;  }
@@ -62,7 +62,7 @@ function informes() {
         type: "GET",
         url: "admin_templates/Informe.cshtml",
         dataType: "html",
-        data: { "consulta": consulta, "reporte": reporte, "inputs": JSON.stringify(input) },
+        data: { "consulta": consulta, "reporte": reporte, "inputs": JSON.stringify(input), "selected": selection },
         success: function (html) {
 
             $('#informe').html((html));

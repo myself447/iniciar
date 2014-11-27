@@ -1,19 +1,13 @@
 ﻿
-@using Newtonsoft.Json;
 @{
     
 
 bool consulta = Convert.ToBoolean(Request.QueryString["consulta"]);
 bool reporte = Convert.ToBoolean(Request.QueryString["reporte"]);
-
-/*if(consulta==true){
-
-    Write("Consultando");
-
-}else if(reporte==true){
-
-   Write("Reportando");
-}*/
+string selected = Request.QueryString["selected"].ToString();
+var inputs = Request.QueryString["inputs"];
+var JSON = Json.Decode(inputs);
+//char c = (char) 98;
 
 
 }
@@ -22,36 +16,79 @@ bool reporte = Convert.ToBoolean(Request.QueryString["reporte"]);
 
 
 @if(consulta==true){
+    string query = "";  
+    var con = Database.Open("disco");                         
+    switch(selected){
+      
+        case "Fecha de entrada": 
+            var a = Convert.ToDateTime(JSON.a); var b = Convert.ToDateTime(JSON.b);
+            var desde = a.Year.ToString() + a.Month.ToString() + a.Day.ToString();
+            var hasta = b.Year.ToString() + b.Month.ToString() + b.Day.ToString(); 
+            query = String.Format("select * from Producto where Fecha_entrada >= {0} and Fecha_entrada <= {1}", desde, hasta);
+        break;
 
-    <text>
-        <strong>Write</strong>
-    </text>
+        case "Título":
+            query = String.Format("select * from Producto where ");
+        <text>Soy El Título!!!!!</text>
+        break;
 
+        case "Precio":
+            query = String.Format("select * from Producto where ");
+        <text>Soy El Precio!!!!!</text>
+        break;
+
+        case "Calificación":
+            query = String.Format("select * from Producto where ");
+        <text>Soy La Calificación!!!!!</text>
+        break;
+
+        default:
+        <text>Soy NADA!!!!!</text>
+        break;
+    }
+    var resultado = con.Query(query); 
+    dynamic[] salida = new dynamic[resultado.Count()];
+    salida = resultado.ToArray();
+    /*var tabla = new WebGrid(resultado, columnNames: new []{"Portada", "Titulo", "Fecha_entrada", "Precio"});
+    <span>@tabla.GetHtml()</span>*/
+    <table class="table">
+        <caption>@resultado.Count()</caption>
+        <tr>
+            <th>Portada</th> <th>Título</th> <th>Fecha de entrada</th> <th>Precio</th> <th>Id</th>
+        </tr>
+        @for(var i=0;i < resultado.Count(); i++){ 
+            <tr>
+                <td><img src="@salida.ElementAt(i).Portada" style="width: 150px;"/></td> 
+                <td>@salida.ElementAt(i).Titulo</td> 
+                <td>@salida.ElementAt(i).Fecha_entrada</td> 
+                <td>@salida.ElementAt(i).Precio</td> 
+                <td>@salida.ElementAt(i).Id</td>
+                <td><span class="glyphicon glyphicon-pencil"></span></td>
+                <td><span class="glyphicon glyphicon-remove-circle"></span></td>
+            </tr> }
+    </table>
 }else if(reporte==true){
 
      <text> 
-        Writemmmm
+        Reportando
     </text>
 }
 
 @{
-    //<text>@Request.QueryString["fecha"]</text>
-   // <text>@Request.QueryString["fecha"].AsDateTime()</text>
-   var inputs = Request.QueryString["inputs"];
-   var js = new JsonTextReader(new StringReader(inputs));
-   var son = @JsonConvert.DeserializeObject(inputs);
-   //var b = son.b;
-   string[] input = new string[6]; 
-   int i; 
-   i=0;
-   //input[i]="";
-   /*while(js.Read()){
-        input[i]="lll"; 
-        //var t = js.Value;
-         i++; 
-         <text>@js.Value</text>
+
+   
+ 
+    //<text>@inputs</text>
+    /*<text>@JSON.a</text>
+    <text>@JSON["b"]</text>*/
+    /*<br />
+    for(var i=0;true;i++){
+        char letra = (char) (i+97);
+        if(JSON[letra.ToString()]==null){
+            break;
         }
-    <text>@js</text>*/
-    <text>@inputs</text>
+
+        <text>@JSON[letra.ToString()]</text>
+    }*/
 }
 
