@@ -51,20 +51,26 @@ var JSON = Json.Decode(inputs);
     salida = resultado.ToArray();
     /*var tabla = new WebGrid(resultado, columnNames: new []{"Portada", "Titulo", "Fecha_entrada", "Precio"});
     <span>@tabla.GetHtml()</span>*/
-    <table class="table">
+    var date="";
+    <table class="">
         <caption>@resultado.Count()</caption>
         <tr>
             <th>Portada</th> <th>Título</th> <th>Fecha de entrada</th> <th>Precio</th> <th>Id</th>
         </tr>
+       
         @for(var i=0;i < resultado.Count(); i++){ 
+            string anio = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Remove(4);
+            string mes = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Substring(4,2);
+            string dia = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Substring(6);
+            date = String.Format("{0}/{1}/{2}", dia, mes, anio);
             <tr>
                 <td><img src="@salida.ElementAt(i).Portada" style="width: 150px;"/></td> 
                 <td>@salida.ElementAt(i).Titulo</td> 
-                <td>@salida.ElementAt(i).Fecha_entrada</td> 
+                <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 
                 <td>@salida.ElementAt(i).Id</td>
-                <td><span class="glyphicon glyphicon-pencil"></span></td>
-                <td><span class="glyphicon glyphicon-remove-circle"></span></td>
+                <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a href=""><span class="glyphicon glyphicon-remove-circle"></span></a></td>
             </tr> }
     </table>
 }else if(reporte==true){

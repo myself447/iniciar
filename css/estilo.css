@@ -201,6 +201,8 @@ input[type=radio].css-checkbox {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: solid 1px Gainsboro ;
 }
 
 #informe table th{
