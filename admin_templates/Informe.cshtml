@@ -24,7 +24,7 @@ var JSON = Json.Decode(inputs);
             var a = Convert.ToDateTime(JSON.a); var b = Convert.ToDateTime(JSON.b);
             var desde = a.Year.ToString() + a.Month.ToString() + a.Day.ToString();
             var hasta = b.Year.ToString() + b.Month.ToString() + b.Day.ToString(); 
-            query = String.Format("select * from Producto where Fecha_entrada >= {0} and Fecha_entrada <= {1}", desde, hasta);
+            query = String.Format("select * from Producto where Fecha_entrada >= {0} and Fecha_entrada <= {1} order by Fecha_entrada desc", desde, hasta);
         break;
 
         case "Título":
