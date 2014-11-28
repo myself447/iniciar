@@ -198,9 +198,12 @@ function upload(element) {
         client.onreadystatechange = function () {
             if (client.readyState == 4 && client.status == 200) {
 
-                alert(client.statusText + " Guardado! " + client.responseText);
-                //document.getElementById('up').style.display = "none";
-               document.getElementById('data').innerHTML = formulario;
+                //alert(client.statusText + " Guardado! " + client.responseText);
+
+                document.getElementById('data').innerHTML = formulario;
+
+                document.getElementById('up').style.display = "inline";
+                $('#up').fadeOut(2500);
             }
             else {
 
