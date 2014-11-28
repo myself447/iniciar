@@ -32,7 +32,7 @@
         
         </div>
         <header class="row-fluid">
-            <span class="carrito btn btn-inverse btn-xs" id="comprado" style="display: none;" ><img src="img/cart.png" alt="carrito" />#, $</span>
+            <span class="carrito btn btn-inverse btn-xs" id="comprado" style="display: none; " ><img src="img/cart.png" alt="carrito" />#, $</span>
             <nav class="main navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <a href="/" class="navbar-brand">Tus Discos</a> 
@@ -50,6 +50,12 @@
                         <li><a href="Artistas">Artistas</a></li>
                         <li><a href="Legal">Legal</a></li>
                         <li><a href="Ayuda">Ayuda</a></li>
+                        <li style="display: none;">
+                            <div class="input-group" id="buscar-todo" >
+                                <input type="text" class="form-control" placeholder="Busque Producto"/>
+                                <span class="input-group-addon glyphicon glyphicon-search"></span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>

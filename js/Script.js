@@ -213,7 +213,9 @@ function upload(element) {
     } else{
 
     alert("Llene todos los campos y selecione al menos una grabación");
-    }   
+    }
+
+    ver_ya();
 }
 
 function consulta(){
@@ -348,4 +350,41 @@ function selected(mi){
     document.getElementById('informar2').innerHTML = por;
     $('.datepicker').pikaday({ firstDay: 1 });
     
+}
+
+function ver_ya(){
+    
+    var menu = document.getElementById('dropdownMenu1');
+    if (menu != null) {
+
+        switch (menu.childNodes[0].nodeValue) {
+            case "Fecha de entrada":
+
+                var d = new Date(); var ini = new Date(document.getElementById('desde').value); var fin = new Date(document.getElementById('hasta').value);
+                var fecha0 = parseInt( d.getFullYear().toString() + d.getMonth().toString() + d.getDate().toString() );
+                var fecha1 = parseInt( ini.getFullYear().toString() + ini.getMonth().toString() + ini.getDate().toString() );
+                var fecha2 = parseInt( fin.getFullYear().toString() + fin.getMonth().toString() + fin.getDate().toString() );
+                if(fecha0 >= fecha1 && fecha0 <= fecha2){ informes(); }
+
+                break;
+
+            case "Título":
+
+            break;
+
+            case "Precio":
+
+            break;
+
+            case "Calificación":
+
+
+            break;
+
+            default:
+ 
+            break;
+
+        }
+    }
 }

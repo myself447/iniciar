@@ -212,3 +212,16 @@ input[type=radio].css-checkbox {
     padding-right: 10px;
     
 }
+
+#buscar-todo span:hover{
+    
+    border:solid 2px silver;  cursor: pointer;
+    
+}
+#buscar-todo{
+    
+    position: relative;
+    top: 10px;
+    
+}
+

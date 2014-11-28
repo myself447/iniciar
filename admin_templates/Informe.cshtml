@@ -24,7 +24,7 @@ var JSON = Json.Decode(inputs);
             var a = Convert.ToDateTime(JSON.a); var b = Convert.ToDateTime(JSON.b);
             var desde = a.Year.ToString() + a.Month.ToString() + a.Day.ToString();
             var hasta = b.Year.ToString() + b.Month.ToString() + b.Day.ToString(); 
-            query = String.Format("select * from Producto where Fecha_entrada >= {0} and Fecha_entrada <= {1} order by Fecha_entrada desc", desde, hasta);
+            query = String.Format("select * from Producto where Fecha_entrada >= {0} and Fecha_entrada <= {1} order by Id desc", desde, hasta);
         break;
 
         case "Título":
@@ -64,7 +64,7 @@ var JSON = Json.Decode(inputs);
             string dia = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Substring(6);
             date = String.Format("{0}/{1}/{2}", dia, mes, anio);
             <tr>
-                <td><img src="@salida.ElementAt(i).Portada" style="width: 150px;"/></td> 
+                <td><img alt="@salida.ElementAt(i).Portada" src="@salida.ElementAt(i).Portada" style="width: 150px;"/></td> 
                 <td>@salida.ElementAt(i).Titulo</td> 
                 <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 
