@@ -391,3 +391,24 @@ function ver_ya(){
         }
     }
 }
+
+function deleting(este){
+
+    var con = new XMLHttpRequest();
+    var id = this.parentNode.childNode[4].nodeValue;
+    
+    con.open("GET", "../CRUD.cshtml?id=" + id.toString(), true);
+
+    con.onreadystatechange = function () {
+
+        if (con.readyState == 4 && con.status == 200) {
+
+            alert("Borrado!");
+        }
+    }
+
+    con.send();
+
+
+
+}

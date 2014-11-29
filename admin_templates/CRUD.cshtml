@@ -1,43 +1,6 @@
-﻿
-@using Newtonsoft.Json;
-@*using Krystalware.UploadHelper;*@
-    @{
+﻿@{
     
-/*<text> @Request.Form["desc"] </text>
-<text> @Request.Form["ref"] </text>
-<text> @Request.Form["titulo"] </text>
-<text> @Request.Form["portada"] </text>
-<text> @Request.Form["precio"] </text>*/
-var json = @Request.Form["files"];
-dynamic js = @JsonConvert.DeserializeObject(json);
-var a = js.b;
-var lector = new JsonTextReader(new StringReader(json));
 
 
-}
-
-@{  //HttpUploadHelper.Upload(@Request.Form["portada"]);
-    //var b = new UploadFile(,);
-    <text>@json</text>
-    <text> </text>
-    <text>@Request.Form["files"].Length</text>
-    <text></text>
-    <text>@json.Length</text>
-    <text></text>
-
-    <text>@Html.Raw(js)</text>
-    <text></text>
-    <text>@Html.Raw(json)</text>
-    <text></text>
-    while(lector.Read()){
-    <text>@lector.Value</text>
-   // <text>@Request.Files[0].FileName.ToString()</text>
-   <text>The file path is: @Request.Form["buscar"]</text>
-   <text>@error</text>
-}
-}
-
-@{
-    //UploadHelper.ProcessRequest()
 
 }
