@@ -203,7 +203,7 @@ function upload(element) {
                 document.getElementById('data').innerHTML = formulario;
 
                 document.getElementById('up').style.display = "inline";
-                $('#up').fadeOut(2500);
+                $('#up').fadeOut(2800, ver_ya());
             }
             else {
 
@@ -218,7 +218,7 @@ function upload(element) {
     alert("Llene todos los campos y selecione al menos una grabación");
     }
 
-    ver_ya();
+    
 }
 
 function consulta(){
@@ -395,20 +395,21 @@ function ver_ya(){
 function deleting(este){
 
     var con = new XMLHttpRequest();
-    var id = this.parentNode.childNode[4].nodeValue;
-    
-    con.open("GET", "../CRUD.cshtml?id=" + id.toString(), true);
+    var id = este.parentNode.parentNode.children[4].innerHTML;
+    //alert(id);
+    con.open("GET", "../admin_templates/CRUD.cshtml?id=" + id.toString(), true);
 
     con.onreadystatechange = function () {
 
         if (con.readyState == 4 && con.status == 200) {
-
-            alert("Borrado!");
+            //document.getElementById().
+            alert("Borrado!" + con.responseText);
+            informes();
         }
     }
 
     con.send();
 
-
+    
 
 }

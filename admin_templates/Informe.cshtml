@@ -52,7 +52,7 @@ var JSON = Json.Decode(inputs);
     /*var tabla = new WebGrid(resultado, columnNames: new []{"Portada", "Titulo", "Fecha_entrada", "Precio"});
     <span>@tabla.GetHtml()</span>*/
     var date="";
-    <table class="">
+    <table class="" id="consultando">
         <caption>@resultado.Count()</caption>
         <tr>
             <th>Portada</th> <th>Título</th> <th>Fecha de entrada</th> <th>Precio</th> <th>Id</th>
@@ -69,8 +69,8 @@ var JSON = Json.Decode(inputs);
                 <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 
                 <td>@salida.ElementAt(i).Id</td>
-                <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td><a href="#" onclick="deleting(this);"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+                <td><span onclick="edit(this)" class="glyphicon glyphicon-pencil"></span></td>
+                <td><span  onclick="deleting(this);" class="glyphicon glyphicon-remove-circle"></span></td>
             </tr> }
     </table>
 }else if(reporte==true){

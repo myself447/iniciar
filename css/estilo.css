@@ -229,3 +229,8 @@ input[type=radio].css-checkbox {
     display: none;  
     margin-left: 25px; color: green;
 }
+
+#consultando tr td:nth-of-type(5) ~ td span:hover{
+    
+    cursor: pointer;
+}

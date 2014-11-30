@@ -1,6 +1,10 @@
 ﻿@{
     
+var id = Request.QueryString["id"];
+var con = Database.Open("disco");
+var exec = String.Format("delete from Producto where id={0}",id);
+con.Execute(exec);
 
-
-
+//<text>@id</text>
 }
+
