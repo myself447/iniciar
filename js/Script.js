@@ -1,6 +1,6 @@
 $('.rating').on('rating.change', function (event, value, caption) {
-    console.log(value);
-    console.log(caption);
+    //console.log(value);
+    //console.log(caption);
     if (this.getAttribute("data-size") == "sm") {
         var url = this.parentNode.parentNode.parentNode.parentNode.parentNode.children[0].children[0].href;
     }
@@ -9,7 +9,19 @@ $('.rating').on('rating.change', function (event, value, caption) {
     }
     var index = url.indexOf("=");
     var id = url.substring(parseInt(index) + 1);
-    alert(id);
+    var con = new XMLHttpRequest();
+    var get = "../admin_templates/CRUD.cshtml?id=" + id.toString() + "&concepto=calificar&calificacion=" + value.toString();
+    con.open("GET", get, true); alert("aqui");
+    con.onreadystatechange = function () {
+
+        if (con.readyState == 4 && con.status == 200) {
+
+            alert(con.status);
+        }
+
+    }
+    con.send();
+    //alert(id);
 });
 
    /* function cargarListado(){
@@ -406,7 +418,7 @@ function deleting(este){
     var con = new XMLHttpRequest();
     var id = este.parentNode.parentNode.children[4].innerHTML;
     //alert(id);
-    con.open("GET", "../admin_templates/CRUD.cshtml?id=" + id.toString(), true);
+    con.open("GET", "../admin_templates/CRUD.cshtml?id=" + id.toString() + "&concepto=borrar", true);
 
     con.onreadystatechange = function () {
 

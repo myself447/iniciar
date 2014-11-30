@@ -1,10 +1,34 @@
 ﻿@{
-    
+var concepto = Request.QueryString["concepto"].ToString();   
 var id = Request.QueryString["id"];
 var con = Database.Open("disco");
-var exec = String.Format("delete from Producto where id={0}",id);
+var exec = "";
+switch(concepto){
+    case "borrar":
+        exec = String.Format("delete from Producto where id={0}", id);
+    break;
+
+    case "calificar":
+        float actual = Convert.ToSingle(Request.QueryString["calificacion"]);
+        float previo = Convert.ToSingle(con.QuerySingle(String.Format("select Estrellas from Producto where id={0}", id)).Estrellas);
+        float resultado = 0;
+        if(previo == 0){
+
+            resultado = actual;
+            
+        }else{
+            
+            resultado = (float)((actual + previo)/2.0);
+
+        }
+       
+        exec = String.Format("update Producto set Estrellas = {0} where id={1}", resultado, id);
+    break;
+
+}
+
 con.Execute(exec);
 
 //<text>@id</text>
 }
-
+ 
