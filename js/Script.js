@@ -1,7 +1,16 @@
-    $('.rating').on('rating.change', function(event, value, caption) {
+$('.rating').on('rating.change', function (event, value, caption) {
     console.log(value);
     console.log(caption);
-    });
+    if (this.getAttribute("data-size") == "sm") {
+        var url = this.parentNode.parentNode.parentNode.parentNode.parentNode.children[0].children[0].href;
+    }
+    else {
+        var url = this.parentNode.parentNode.parentNode.children[0].href;
+    }
+    var index = url.indexOf("=");
+    var id = url.substring(parseInt(index) + 1);
+    alert(id);
+});
 
    /* function cargarListado(){
 
