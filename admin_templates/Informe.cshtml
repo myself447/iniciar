@@ -28,17 +28,16 @@ var JSON = Json.Decode(inputs);
         break;
 
         case "Título":
-            query = String.Format("select * from Producto where ");
-        <text>Soy El Título!!!!!</text>
+            query = String.Format("select * from Producto where Titulo like '{0}%'", JSON["a"]);
         break;
 
         case "Precio":
-            query = String.Format("select * from Producto where ");
+            query = String.Format("select * from Producto where Precio >= {0} and Precio <= {1} order by Id desc", JSON["a"], JSON["b"]);
         <text>Soy El Precio!!!!!</text>
         break;
 
         case "Calificación":
-            query = String.Format("select * from Producto where ");
+            query = String.Format("select * from Producto where Estrellas >= {0} and Estrellas <= {1} order by Id desc", JSON["a"], JSON["b"]);
         <text>Soy La Calificación!!!!!</text>
         break;
 

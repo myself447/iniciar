@@ -203,7 +203,7 @@ function upload(element) {
                 document.getElementById('data').innerHTML = formulario;
 
                 document.getElementById('up').style.display = "inline";
-                $('#up').fadeOut(2800, ver_ya());
+                $('#up').fadeOut(2700, ver_ya());
             }
             else {
 
