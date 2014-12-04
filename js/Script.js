@@ -434,3 +434,23 @@ function deleting(este){
     
 
 }
+
+function edit(este){
+
+    con = new XMLHttpRequest();
+    var id = este.parentNode.parentNode.children[4].innerHTML;
+    con.open("GET", "../admin_templates/CRUD.cshtml?concepto=actualizar&id=" + id.toString(), true);
+
+    con.onreadystatechange = function () {
+
+        if (con.readyState == 4 && con.status == 200) {
+            var data = con.responseText; alert(data);
+            for (var i = 0; i < data.length; i++) {
+                alert(data[i].toString());
+            }
+        }
+    }
+
+    con.send();
+
+}

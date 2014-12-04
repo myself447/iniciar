@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
 var concepto = Request.QueryString["concepto"].ToString();   
 var id = Request.QueryString["id"];
 var con = Database.Open("disco");
@@ -25,10 +26,21 @@ switch(concepto){
         exec = String.Format("update Producto set Estrellas = {0} where id={1}", resultado, id);
     break;
 
+    case "actualizar":
+        var query = String.Format("select * from Grabaciones where Id_producto={0}", id);
+        var result = con.Query(query);
+        foreach(var valor in result){
+            
+            <div name="grabaciones">@valor.Titulo</div>
+
+        }
+        
+    break;
+
 }
 
-con.Execute(exec);
-
+if(exec!=""){ con.Execute(exec); }
+con.Close();
 //<text>@id</text>
 }
  

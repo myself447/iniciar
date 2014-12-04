@@ -1,5 +1,8 @@
 ﻿@{
     var accion = Request.Form["accion"].ToString();
+    
+    if(accion == "Agregar Producto"){
+
     var archivos = Request.Files;
     var dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString());
     var producto = new Dictionary<string, dynamic>(){ 
@@ -9,7 +12,7 @@
         {"desc", Request.Form["desc"]}
 
     }; 
-    if(accion == "Agregar Producto"){
+
         // Guardado de archivos inicia
         try{
             var portada = archivos[0];

@@ -28,7 +28,7 @@ var JSON = Json.Decode(inputs);
         break;
 
         case "Título":
-            query = String.Format("select * from Producto where Titulo like '{0}%'", JSON["a"]);
+            query = String.Format("select * from Producto where Titulo like '{0}%' order by Id desc", JSON["a"]);
         break;
 
         case "Precio":
@@ -68,7 +68,7 @@ var JSON = Json.Decode(inputs);
                 <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 
                 <td>@salida.ElementAt(i).Id</td>
-                <td><span onclick="edit(this)" class="glyphicon glyphicon-pencil"></span></td>
+                <td><span onclick="edit(this);" class="glyphicon glyphicon-pencil"></span></td>
                 <td><span  onclick="deleting(this);" class="glyphicon glyphicon-remove-circle"></span></td>
             </tr> }
     </table>
