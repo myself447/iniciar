@@ -439,7 +439,21 @@ function edit(este){
 
     con = new XMLHttpRequest();
     var id = este.parentNode.parentNode.children[4].innerHTML;
+    var precio = este.parentNode.parentNode.children[3].innerHTML;
+    var portada = este.parentNode.parentNode.children[0].children[0].src;
+    var titulo = este.parentNode.parentNode.children[1].innerHTML;
+    var ref = este.parentNode.parentNode.children[5].innerHTML;;
+    var desc = este.parentNode.parentNode.children[6].innerHTML;;
+
+    //document.getElementsByName('buscar')[0].value = portada;
+    document.getElementsByName('portada')[0].value = portada;
+    document.getElementsByName('titulo')[0].value = titulo;
+    document.getElementsByName('precio')[0].value = precio;
+    document.getElementById('ref').value = ref;
+    document.getElementById('desc').value = desc;
     con.open("GET", "../admin_templates/CRUD.cshtml?concepto=actualizar&id=" + id.toString(), true);
+
+  
 
     con.onreadystatechange = function () {
 
@@ -448,7 +462,7 @@ function edit(este){
             grabs.body.innerHTML = con.responseText; //alert(data);
             var divs = grabs.getElementsByTagName("div");
             for (var i = 0; i < divs.length; i++) {
-                alert(divs[i].innerHTML.toString());
+               // alert(divs[i].innerHTML.toString());
             }
         }
     }

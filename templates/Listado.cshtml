@@ -33,7 +33,7 @@
     <div class="col-md-6" style="padding:0px; margin:0px;">
         <div class="col-xs-7">
             <a href="Detalle?Id=@lista.ElementAt(i).Id"><img src="@lista.ElementAt(i).Portada" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
-            <input value="0" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
+            <input value="@lista.ElementAt(i).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
         </div>
         
         <div class="col-xs-5">
@@ -52,7 +52,7 @@
     <div class="col-md-6" style="padding:0px; margin:0px;">
         <div class="col-xs-7" >
             <a href="Detalle?Id=@lista.ElementAt(i+j).Id"><img src="@lista.ElementAt(i+j).Portada" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
-            <input value="0" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
+            <input value="@lista.ElementAt(i+j).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>
         

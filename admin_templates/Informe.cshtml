@@ -68,6 +68,8 @@ var JSON = Json.Decode(inputs);
                 <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 
                 <td>@salida.ElementAt(i).Id</td>
+                <td hidden>@salida.ElementAt(i).Referencia</td>
+                <td hidden>@salida.ElementAt(i).Descripcion</td>
                 <td><span onclick="edit(this);" class="glyphicon glyphicon-pencil"></span></td>
                 <td><span  onclick="deleting(this);" class="glyphicon glyphicon-remove-circle"></span></td>
             </tr> }
