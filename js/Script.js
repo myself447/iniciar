@@ -444,13 +444,15 @@ function edit(este){
     con.onreadystatechange = function () {
 
         if (con.readyState == 4 && con.status == 200) {
-            var data = con.responseText; alert(data);
-            for (var i = 0; i < data.length; i++) {
-                alert(data[i].toString());
+            var grabs = document.implementation.createHTMLDocument();
+            grabs.body.innerHTML = con.responseText; //alert(data);
+            var divs = grabs.getElementsByTagName("div");
+            for (var i = 0; i < divs.length; i++) {
+                alert(divs[i].innerHTML.toString());
             }
         }
     }
 
-    con.send();
+    con.send(null);
 
 }
