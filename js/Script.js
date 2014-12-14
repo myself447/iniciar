@@ -453,7 +453,7 @@ function edit(este){
     document.getElementById('desc').value = desc;
     con.open("GET", "../admin_templates/CRUD.cshtml?concepto=actualizar&id=" + id.toString(), true);
 
-  
+
 
     con.onreadystatechange = function () {
 
@@ -462,11 +462,20 @@ function edit(este){
             grabs.body.innerHTML = con.responseText; //alert(data);
             var divs = grabs.getElementsByTagName("div");
             for (var i = 0; i < divs.length; i++) {
-               // alert(divs[i].innerHTML.toString());
+                $("#tabla").append("<tr onmouseover='prev(this);'><td>" + divs[i].innerHTML.toString() + "</td><td><span  onclick='del(this);' class='glyphicon glyphicon-remove'></span> </td></tr>");
             }
         }
     }
 
     con.send(null);
+
+    document.getElementById('add_update').value = "Actulizar Producto";
+
+}
+
+function prev(este) {
+
+   /* este.parentNode.parentNode.parentNode.children[2].src = location.href + "/Producto/" + este.children[0].innerHTML;
+    $("#preview").fadeToggle();*/
 
 }
