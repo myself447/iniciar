@@ -106,7 +106,7 @@ function buscar_portada(){
 
 function get_portada(element){
     
-    $("input[name='portada']").attr("value", element.value);
+    $("input[name='portada']").attr("src", element.value);
 
 }
 /*$("#producto div:nth-of-type(2) > span").click(function () {

@@ -23,11 +23,12 @@
                     <span class="input-group-addon">Título:</span>
                     <input type="text" class="form-control" name="titulo" placeholder="Entre el Título">
                 </div>
-                <div class="input-group">
+                <div class="input-group" style="position: relative; left: 15%;">
                     @*<span class="input-group-addon" >Portada:</span>*@
-                    <input type="text" class="form-control" name="portada" placeholder="Busque la Portada">
-                    <input type="file" name="buscar" onchange="get_portada(this);" accept="image/x-png, image/gif, image/jpeg">
-                    <span class="input-group-addon" id="buscar" onclick="buscar_portada();"><span class="glyphicon glyphicon-search"></span></span>
+                    @*<input type="text" class="form-control" name="portada" placeholder="Busque la Portada">*@
+                    <img src="../img/portada0.jpg" alt="portada" class="img-thumbnail" name="portada" style="width: 150px; height: 150px; border-radius: 5px 0px 0px 5px;">
+                    <input type="file" name="buscar" onchange="get_portada(this);" accept="image/x-png, image/gif, image/jpeg" hidden>
+                    <span class="btn btn-default" id="buscar" onclick="buscar_portada();"><span class="glyphicon glyphicon-search"></span></span>
                     
                 </div>
                 <div class="input-group">

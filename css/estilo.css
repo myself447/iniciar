@@ -230,7 +230,7 @@ input[type=radio].css-checkbox {
     margin-left: 25px; color: green;
 }
 
-#consultando tr td:nth-of-type(5) ~ td span:hover{
+#consultando .glyphicon, #tabla .glyphicon{
     
     cursor: pointer;
 }
@@ -243,3 +243,18 @@ input[type=radio].css-checkbox {
     left: 30%;
     display: none;
 }
+
+#buscar{
+    
+    height: 150px;
+    border-radius: 0px 10px 10px 0px;
+    position: relative;
+    left: -5px;
+}
+
+#buscar .glyphicon{
+    
+    position: relative; 
+    top: 37%;
+}
+
