@@ -1,10 +1,13 @@
 ﻿@{
     var accion = Request.Form["accion"].ToString();
-    
+    string id_producto = "";
+    var current_id = "";
+    if(accion=="Actulizar Producto"){ current_id = Request.Form["current_id"].ToString(); }
+   
     if(accion == "Agregar Producto"){
 
     var archivos = Request.Files;
-    var dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString());
+    var dir = "";
     var producto = new Dictionary<string, dynamic>(){ 
         {"titulo", Request.Form["titulo"]}, 
         {"precio", Request.Form["precio"]}, 
@@ -12,6 +15,29 @@
         {"desc", Request.Form["desc"]}
 
     }; 
+        // Guardado de datos inicio
+        try{
+        var todb = Database.Open("disco");
+        var fecha = DateTime.Now; 
+        string command = String.Format(@"INSERT INTO Producto(Titulo, Portada, Precio, Referencia, Descripcion, Fecha_entrada)values(
+        '{0}', 'portadas/{1}', {2}, '{3}', '{4}', {5})", 
+        producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], 
+        Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString() ) );
+        todb.Execute(command);
+        id_producto = todb.GetLastInsertId().ToString();
+        dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString() + id_producto);
+        string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
+        for( var i=1; i < Request.Files.Count; i++ ){
+
+              todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir.FullName.ToString() + "/" + archivos[i].FileName + id_producto, id_producto));
+
+           }
+        todb.Close();
+        }catch(Exception e){
+           
+           <text>@e.Message.ToString()</text>
+       }
+        // Guardado de datos finaliza
 
         // Guardado de archivos inicia
         try{
@@ -30,6 +56,11 @@
         }
         // Guardado de archivos finaliza
         
+        
+    }
+    else if(accion == "Actulizar Producto"){
+       
+
         // Guardado de datos inicio
         try{
         var todb = Database.Open("disco");
@@ -37,9 +68,9 @@
         string command = String.Format(@"INSERT INTO Producto(Titulo, Portada, Precio, Referencia, Descripcion, Fecha_entrada)values(
         '{0}', 'portadas/{1}', {2}, '{3}', '{4}', {5})", 
         producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], 
-        Convert.ToInt64(fecha.Year.ToString()+fecha.Month.ToString()+fecha.Day.ToString() ) );
+        Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString() ) );
         todb.Execute(command);
-        string id_producto = todb.GetLastInsertId().ToString();
+        id_producto = todb.GetLastInsertId().ToString();
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
         for( var i=1; i < Request.Files.Count; i++ ){
 
@@ -51,12 +82,24 @@
            
            <text>@e.Message.ToString()</text>
        }
-       // Guardado de datos finaliza
-    }
-    else if(accion == "Actulizar Producto"){
-        
+        // Guardado de datos finaliza
 
+        // Guardado de archivos inicia
+        try{
+            var portada = archivos[0];
+            portada.SaveAs(Server.MapPath("../portadas/").ToString() + portada.FileName.ToString());
+           
+            for( var i=1; i < Request.Files.Count; i++ ){
 
+               archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName  + id_producto);
+
+            }
+        }catch(Exception f){
+
+            <text>@f.Message.ToString()</text>
+
+        }
+        // Guardado de archivos finaliza
     }
   
 }

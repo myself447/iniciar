@@ -181,6 +181,7 @@ function upload(element) {
     for (var j = 0; j < archivos.length; j++) {
         if (archivos[j].value != "") {
             validacion = true;
+            break;
         }
     }
 
@@ -188,13 +189,18 @@ function upload(element) {
     //alert(validacion);
     
 
-    if(portada != null && $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!="" && validacion==true){
+    if(portada != null && $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!="" /*&& validacion==true*/){
         
         /* Create a FormData instance */
         var formData = new FormData();
         /* Add the file */
          //alert("que!");
+        if(element.value == "Actulizar Producto"){
 
+            formData.append("current_id", document.getElementById('current_id').getAttribute("item"));
+            var toRemove = document.querySelectorAll("#current_id tr td:nth-child(1)");
+            for(var u = 0; u<toRemove.length; u++){ formData("toRemove",toRemove[u].innerHTML); }
+        }
         formData.append("accion", element.value); 
         formData.append("uploads[]", portada.files[0], portada.files[0].name);
         for(var i=0;i<archivos.length-1;i++){
@@ -207,7 +213,7 @@ function upload(element) {
         formData.append("ref", $("#ref").val());
         formData.append("desc", $("#desc").val());
         //alert($("#ref").val() + " " + $("#desc").val()) ;  
-
+        
 
         var client = new XMLHttpRequest();
 
@@ -437,6 +443,8 @@ function deleting(este){
 
 function edit(este){
 
+    document.getElementById("current_id").setAttribute("item", este.parentNode.parentNode.children[4].innerHTML);
+
     con = new XMLHttpRequest();
     var id = este.parentNode.parentNode.children[4].innerHTML;
     var precio = este.parentNode.parentNode.children[3].innerHTML;
@@ -461,8 +469,9 @@ function edit(este){
             var grabs = document.implementation.createHTMLDocument();
             grabs.body.innerHTML = con.responseText; //alert(data);
             var divs = grabs.getElementsByTagName("div");
+            $("#tabla").html("");
             for (var i = 0; i < divs.length; i++) {
-                $("#tabla").append("<tr onmouseover='prev(this);'><td>" + divs[i].innerHTML.toString() + "</td><td><span  onclick='del(this);' class='glyphicon glyphicon-remove'></span> </td></tr>");
+                $("#tabla").append("<tr id='tr" + i + "'><td>" + divs[i].innerHTML.toString() + "</td><td><span  onclick='del(this);' class='glyphicon glyphicon-remove'></span> </td></tr>");
             }
         }
     }
@@ -473,10 +482,12 @@ function edit(este){
 
 }
 
-function prev(este) {
-
-   /* este.parentNode.parentNode.parentNode.children[2].src = location.href + "/Producto/" + este.children[0].innerHTML;
-    $("#preview").fadeToggle();*/
+function del(este) {
+    //alert(este);
+    var hijo = este.parentNode.parentNode;
+    var padre = este.parentNode.parentNode.parentNode.parentNode;
+    document.getElementById("current_id").appendChild(hijo); 
+    padre.children[0].removeChild(hijo);
 
 }
 
