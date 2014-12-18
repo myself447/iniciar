@@ -183,7 +183,7 @@ input[type=radio].css-checkbox {
 
 }
 
-#producto div:nth-of-type(2) > span:hover, #producto div:nth-of-type(6) ~ div > span:hover{
+#producto div:nth-of-type(6) ~ div > span:hover{
     
     cursor: pointer;
     border: solid 2px grey;
@@ -246,7 +246,7 @@ input[type=radio].css-checkbox {
 
 #buscar{
     
-    height: 150px;
+    height: 113px;
     border-radius: 0px 10px 10px 0px;
     position: relative;
     left: -5px;

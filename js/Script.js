@@ -446,7 +446,7 @@ function edit(este){
     var desc = este.parentNode.parentNode.children[6].innerHTML;;
 
     //document.getElementsByName('buscar')[0].value = portada;
-    document.getElementsByName('portada')[0].value = portada;
+    document.getElementsByName('portada')[0].src = portada;
     document.getElementsByName('titulo')[0].value = titulo;
     document.getElementsByName('precio')[0].value = precio;
     document.getElementById('ref').value = ref;
@@ -479,3 +479,16 @@ function prev(este) {
     $("#preview").fadeToggle();*/
 
 }
+
+var openFile = function (event) {
+
+    var input = event.target;
+    var lector = new FileReader();
+    lector.onload = function () {
+
+        var dataURL = lector.result;
+        var salida = document.getElementsByName('portada')[0];
+        salida.src = dataURL;
+    };
+    lector.readAsDataURL(input.files[0]);
+};
