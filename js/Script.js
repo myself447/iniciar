@@ -151,7 +151,7 @@ function cambio(element){
 
 document.body.onload = function () {
 
-    formulario = document.getElementById('data').innerHTML;
+    //formulario = document.getElementById('data').innerHTML;
 
     document.getElementById('rConsulta').checked = false;
     document.getElementById('rReporte').checked = false;
@@ -161,13 +161,13 @@ document.body.onload = function () {
 
 //var data = document.getElementById('data').innerHTML;
 function upload(element) {
-    if ($("input[name=buscar]").val() != "") {
+   /* if ($("input[name=buscar]").val() != "") {
         portada = document.getElementsByName('buscar')[0];
     }
     else {
-        //alert("yo");
-        portada = null; 
-    }
+        
+        portada = $("img[name=portada]").attr("src"); 
+    }*/
     var archivos = document.querySelectorAll("#producto div:nth-of-type(6) ~ div input[type=file]");
     var form = document.getElementById('data');
     
@@ -177,19 +177,19 @@ function upload(element) {
         //document.getElementById('up').style.display = "inline";
     }
    
-    var validacion = false;
+   /* var validacion = false;
     for (var j = 0; j < archivos.length; j++) {
         if (archivos[j].value != "") {
             validacion = true;
             break;
         }
-    }
+    }*/
 
      
     //alert(validacion);
-    
+     /*&& validacion==true*/
 
-    if(portada != null && $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!="" /*&& validacion==true*/){
+    if(portada != null && $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!=""){
         
         /* Create a FormData instance */
         var formData = new FormData();
@@ -202,7 +202,7 @@ function upload(element) {
             for(var u = 0; u<toRemove.length; u++){ formData("toRemove",toRemove[u].innerHTML); }
         }
         formData.append("accion", element.value); 
-        formData.append("uploads[]", portada.files[0], portada.files[0].name);
+        if(portada.files!=undefined){formData.append("uploads[]", portada.files[0], portada.files[0].name);}
         for(var i=0;i<archivos.length-1;i++){
             var archivo = archivos[i];
             formData.append("uploads[]", archivo.files[0], archivo.files[0].name);
@@ -227,7 +227,21 @@ function upload(element) {
 
                 //alert(client.statusText + " Guardado! " + client.responseText);
 
-                document.getElementById('data').innerHTML = formulario;
+                var padre = document.getElementById('producto');
+                var hijos1 = document.querySelectorAll('#producto div:nth-child(6) ~ div');
+                for (var h = 0; h < hijos1.length; h++) { padre.removeChild(hijos1[h]); }
+                $("input[name=titulo]").val("");
+                $("img[name=portada]").attr("src","../img/portada0.jpg");
+                $("input[name=precio]").val("");
+                $("input[name=ruta]").val("");
+                $("input[name=busqueda1]").val("");
+                $("input[name=buscar]").val("");
+                $("#ref").val("");
+                $("#desc").val("");
+                
+                /*var hijos2 = document.querySelectorAll('#producto input, #producto img, #producto textarea');
+                for(var h = 0; h < hijos2; h++){hijos2[h]}*/
+
 
                 document.getElementById('up').style.display = "inline";
                 $('#up').fadeOut(2700, ver_ya());
@@ -242,7 +256,7 @@ function upload(element) {
       
     } else{
 
-    alert("Llene todos los campos y selecione al menos una grabación");
+    alert("Llene los campos requeridos");
     }
 
     
@@ -499,7 +513,9 @@ var openFile = function (event) {
 
         var dataURL = lector.result;
         var salida = document.getElementsByName('portada')[0];
+        
         salida.src = dataURL;
+        
     };
     lector.readAsDataURL(input.files[0]);
 };
