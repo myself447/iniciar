@@ -2,6 +2,7 @@
     var accion = Request.Form["accion"].ToString();
     string id_producto = "";
     var current_id = "";
+    var old_title = "";
     var archivos = Request.Files;
     dynamic dir = null;
     var producto = new Dictionary<string, dynamic>(){ 
@@ -23,7 +24,7 @@
         producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], 
         Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString() ) );
         todb.Execute(command);
-        id_producto = todb.GetLastInsertId().ToString();
+        id_producto = todb.GetLastInsertId().ToString(); 
         dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString() + id_producto.ToString());
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
         for( var i=1; i < Request.Files.Count; i++ ){
@@ -58,7 +59,8 @@
         
     }
     else if(accion == "Actulizar Producto"){
-       current_id = Request.Form["current_id"].ToString();
+        old_title = Request.Form["old_title"].ToString();
+        current_id = Request.Form["current_id"].ToString();
 
         // Guardado de datos inicio
         try{
@@ -85,6 +87,23 @@
            <text>@e.Message.ToString()</text>
        }
         // Guardado de datos finaliza
+
+        // Eliminacion de archivos a sustituir
+        var old_carpeta = old_title.ToString() + current_id.ToString();
+        var new_carpeta = producto["titulo"] + current_id.ToString();
+        Directory.Move(Server.MapPath("/").ToString() + "Producto/" +  old_carpeta, Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
+        //var productos = Directory.GetFiles(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
+        FileInfo productos = new FileInfo(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
+        var files = productos.Directory.GetFiles();
+        foreach(var file in files){
+
+          if(file.Name.ToString() == old_title.ToString() + current_id.ToString()){
+                
+                file.Delete();
+            }
+        }
+
+        // Fin de Eliminacion de archivos a sustituir
 
         // Guardado de archivos inicia
         try{

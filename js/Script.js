@@ -198,8 +198,9 @@ function upload(element) {
         if(element.value == "Actulizar Producto"){
 
             formData.append("current_id", document.getElementById('current_id').getAttribute("item"));
+            formData.append("old_title", document.getElementById('current_id').getAttribute("itemref"));
             var toRemove = document.querySelectorAll("#current_id tr td:nth-child(1)");
-            for(var u = 0; u<toRemove.length; u++){ formData("toRemove",toRemove[u].innerHTML); }
+            for(var u = 0; u < toRemove.length; u++){ formData.append("toRemove",toRemove[u].innerHTML); }
         }
         formData.append("accion", element.value); 
         if(portada.files!=undefined){formData.append("uploads[]", portada.files[0], portada.files[0].name);}
@@ -228,17 +229,18 @@ function upload(element) {
                 //alert(client.statusText + " Guardado! " + client.responseText);
 
                 var padre = document.getElementById('producto');
-                var hijos1 = document.querySelectorAll('#producto div:nth-child(6) ~ div');
+                var hijos1 = document.querySelectorAll('#producto div:nth-child(7) ~ div');
                 for (var h = 0; h < hijos1.length; h++) { padre.removeChild(hijos1[h]); }
                 $("input[name=titulo]").val("");
-                $("img[name=portada]").attr("src","../img/portada0.jpg");
+                $("img[name=portada]").attr("src", "../img/portada0.jpg");
                 $("input[name=precio]").val("");
                 $("input[name=ruta]").val("");
                 $("input[name=busqueda1]").val("");
                 $("input[name=buscar]").val("");
                 $("#ref").val("");
                 $("#desc").val("");
-                
+                document.getElementById('tabla').innerHTML = "";
+
                 /*var hijos2 = document.querySelectorAll('#producto input, #producto img, #producto textarea');
                 for(var h = 0; h < hijos2; h++){hijos2[h]}*/
 
@@ -458,6 +460,7 @@ function deleting(este){
 function edit(este){
 
     document.getElementById("current_id").setAttribute("item", este.parentNode.parentNode.children[4].innerHTML);
+    document.getElementById("current_id").setAttribute("itemref", este.parentNode.parentNode.children[1].innerHTML);
 
     con = new XMLHttpRequest();
     var id = este.parentNode.parentNode.children[4].innerHTML;
