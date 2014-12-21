@@ -227,7 +227,7 @@ function upload(element) {
             if (client.readyState == 4 && client.status == 200) {
 
                 //alert(client.statusText + " Guardado! " + client.responseText);
-
+                 
                 var padre = document.getElementById('producto');
                 var hijos1 = document.querySelectorAll('#producto div:nth-child(7) ~ div');
                 for (var h = 0; h < hijos1.length; h++) { padre.removeChild(hijos1[h]); }
