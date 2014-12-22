@@ -71,9 +71,11 @@
         todb.Execute(command);
         id_producto = todb.GetLastInsertId().ToString();
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
+        dir = Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString() + current_id;
+        
         for( var i=1; i < Request.Files.Count; i++ ){
 
-              todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir.FullName.ToString() + "/" + archivos[i].FileName, current_id));
+              todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir + "/" + archivos[i].FileName, current_id));
 
            }
         if(Request.Form["toRemove"]!=null){
@@ -95,6 +97,8 @@
         //var productos = Directory.GetFiles(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         FileInfo productos = new FileInfo(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         var files = productos.Directory.GetFiles();
+
+        foreach(){}
         foreach(var file in files){
 
           if(file.Name.ToString() == old_title.ToString() + current_id.ToString()){
