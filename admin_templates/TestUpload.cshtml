@@ -4,6 +4,16 @@
     var current_id = "";
     var old_title = "";
     var archivos = Request.Files;
+    var portada = ""; string covers = "";
+    string error ="";
+    try{
+        portada = Request.Form["portada"].ToString();
+    }
+    catch(Exception e){
+        
+        portada = archivos[0].FileName.ToString();
+        covers = "portadas/";
+    }
     dynamic dir = null;
     var producto = new Dictionary<string, dynamic>(){ 
         {"titulo", Request.Form["titulo"]}, 
@@ -12,7 +22,9 @@
         {"desc", Request.Form["desc"]}
 
     };
-   
+    //var image = new  WebImage("");
+
+   //<text>@archivos[0].FileName.ToString()</text>
     if(accion == "Agregar Producto"){
          
         // Guardado de datos inicio
@@ -20,12 +32,12 @@
         var todb = Database.Open("disco");
         var fecha = DateTime.Now; 
         string command = String.Format(@"INSERT INTO Producto(Titulo, Portada, Precio, Referencia, Descripcion, Fecha_entrada)values(
-        '{0}', 'portadas/{1}', {2}, '{3}', '{4}', {5})", 
-        producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], 
+        '{0}', '{1}', {2}, '{3}', '{4}', {5})", 
+        producto["titulo"], covers + portada.ToString(), producto["precio"], producto["ref"], producto["desc"], 
         Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString() ) );
         todb.Execute(command);
         id_producto = todb.GetLastInsertId().ToString(); 
-        dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString() + id_producto.ToString());
+        dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + producto["titulo"] + id_producto.ToString());
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
         for( var i=1; i < Request.Files.Count; i++ ){
 
@@ -34,24 +46,25 @@
            } 
         todb.Close();
         }catch(Exception e){
-           
-           <text>@e.Message.ToString()</text>
+           error = "Error Guardando datos en agregar producto\n" + e.Message.ToString();
+           <text>@error</text>
        }
         // Guardado de datos finaliza
 
         // Guardado de archivos inicia
         try{
-            var portada = archivos[0];
-            portada.SaveAs(Server.MapPath("../portadas/").ToString() + portada.FileName.ToString());
-           
+            if(archivos[0].FileName.ToString()!=null){
+            //var portada = archivos[0].FileName.ToString();
+            archivos[0].SaveAs(Server.MapPath("../portadas/").ToString() + archivos[0].FileName.ToString());
+           }
             for( var i=1; i < Request.Files.Count; i++ ){
 
                archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName);
-
+               
             }
         }catch(Exception f){
-
-            <text>@f.Message.ToString()</text>
+            error = "Error Guardando archivos en agregar producto\n" + f.Message.ToString();
+            <text>@error</text>
 
         }
         // Guardado de archivos finaliza
@@ -66,62 +79,63 @@
         try{
         var todb = Database.Open("disco");
         var fecha = DateTime.Now; 
-        string command = String.Format(@"UPDATE Producto SET Titulo='{0}', Portada='portadas/{1}', Precio={2}, Referencia='{3}', Descripcion='{4}' where Id={5};",
-        producto["titulo"], archivos[0].FileName.ToString(), producto["precio"], producto["ref"], producto["desc"], current_id );
+        string command = String.Format(@"UPDATE Producto SET Titulo='{0}', Portada='{1}', Precio={2}, Referencia='{3}', Descripcion='{4}' where Id={5};",
+        producto["titulo"], covers + portada.ToString(), producto["precio"], producto["ref"], producto["desc"], current_id );
         todb.Execute(command);
         id_producto = todb.GetLastInsertId().ToString();
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
-        dir = Server.MapPath("/").ToString() + "Producto/" + Request.Form["titulo"].ToString() + current_id;
+        dir = Server.MapPath("/").ToString() + "Producto/" + producto["titulo"] + current_id;
         
         for( var i=1; i < Request.Files.Count; i++ ){
 
               todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir + "/" + archivos[i].FileName, current_id));
 
            }
-        if(Request.Form["toRemove"]!=null){
-            
-            <text>toRemove is not nulo chevere!</text>
-        }
-        
         todb.Close();
         }catch(Exception e){
-           
-           <text>@e.Message.ToString()</text>
-       }
+           error = "Error Guardando datos en actualizar producto\n" + e.Message.ToString();
+           <text>@error</text>
+       } 
         // Guardado de datos finaliza
 
         // Eliminacion de archivos a sustituir
         var old_carpeta = old_title.ToString() + current_id.ToString();
         var new_carpeta = producto["titulo"] + current_id.ToString();
-        Directory.Move(Server.MapPath("/").ToString() + "Producto/" +  old_carpeta, Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
+        if(old_title.ToString() != producto["titulo"]){
+             Directory.Move(Server.MapPath("/").ToString() + "Producto/" +  old_carpeta, Server.MapPath("/").ToString() + "Producto/" + new_carpeta); 
+             }
         //var productos = Directory.GetFiles(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         FileInfo productos = new FileInfo(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         var files = productos.Directory.GetFiles();
-
-        foreach(){}
+        if(Request.Form["toRemove"]!=null){
+        var toRemove = Request.Form["toRemove"].ToArray();
+        foreach(var remover in toRemove){
         foreach(var file in files){
 
-          if(file.Name.ToString() == old_title.ToString() + current_id.ToString()){
+          if(file.Name.ToString() == remover.ToString()){
                 
                 file.Delete();
             }
+        }
+        }
         }
 
         // Fin de Eliminacion de archivos a sustituir
 
         // Guardado de archivos inicia
         try{
-            var portada = archivos[0];
-            portada.SaveAs(Server.MapPath("../portadas/").ToString() + portada.FileName.ToString());
-           
+            if(archivos[0].FileName.ToString()!=null){
+            //var portada = archivos[0];
+            archivos[0].SaveAs(Server.MapPath("../portadas/").ToString() + archivos[0].FileName.ToString());
+            }
             for( var i=1; i < Request.Files.Count; i++ ){
 
                archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName);
 
             }
         }catch(Exception f){
-
-            <text>@f.Message.ToString()</text>
+            error = "Error Guardando archivos en actualizar producto\n" + f.Message.ToString();
+           <text>@error</text>
 
         }
         // Guardado de archivos finaliza
@@ -140,5 +154,5 @@
 <text>@DateTime.Now.ToLocalTime()</text> 
 <text>@DateTime.Now.ToOADate()</text>  
 <text>@DateTime.Now.ToString()</text>  
-<text>@DateTime.Now.ToLongTimeString()</text>*/ 
+<text>@DateTime.Now.ToLongTimeString()</text>*/
 }

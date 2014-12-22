@@ -258,3 +258,7 @@ input[type=radio].css-checkbox {
     top: 37%;
 }
 
+input[value="Busque Grabación"]{
+    
+    color: Gainsboro;
+}

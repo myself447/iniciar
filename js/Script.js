@@ -123,13 +123,13 @@ function grabs(element){
 }
 
 function cambio(element){
-    
+    //alert("hell!");
     var x = String(element.name); x = x.substring(8);  
     var number = parseInt(x) + 1; //alert(String(number));
     var busqueda = "busqueda" + String(number);
     //alert(element.value);
-    $("#" + element.name).attr("value", element.value);
-    var files = document.querySelectorAll("#producto div input[name=ruta]");
+    $("#" + element.name).attr("value", element.value); 
+    var files = document.querySelectorAll("#producto div input[name=ruta]"); 
     var agregar = true;
     for (i = 0; i < files.length;i++){
 
@@ -137,7 +137,7 @@ function cambio(element){
             agregar = false;
             break;
         }
-    }
+    } //alert(agregar);
     if (agregar) {
         $("#producto").append(
            "<div class='input-group'> \
@@ -161,13 +161,25 @@ document.body.onload = function () {
 
 //var data = document.getElementById('data').innerHTML;
 function upload(element) {
-   /* if ($("input[name=buscar]").val() != "") {
+     /* Create a FormData instance */
+    var formData = new FormData();
+
+    if ($("input[name=buscar]").val() != "") {
         portada = document.getElementsByName('buscar')[0];
     }
     else {
-        
-        portada = $("img[name=portada]").attr("src"); 
-    }*/
+        formData.append("portada", document.getElementsByName('portada')[0].src);
+
+        portada = "";
+        /*var reader = new FileReader();
+        reader.onload = function (e) {
+
+            var img = e.result;
+        }
+
+        reader.readAsText(file);*/
+
+    }
     var archivos = document.querySelectorAll("#producto div:nth-of-type(6) ~ div input[type=file]");
     var form = document.getElementById('data');
     
@@ -189,10 +201,9 @@ function upload(element) {
     //alert(validacion);
      /*&& validacion==true*/
 
-    if(portada != null && $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!=""){
+    if(/*portada != null && */ $("input[name=titulo]").val() != "" && $("input[name=precio]").val()!="" && $("#ref").val()!="" && $("#desc").val()!=""){
         
-        /* Create a FormData instance */
-        var formData = new FormData();
+       
         /* Add the file */
          //alert("que!");
         if(element.value == "Actulizar Producto"){
@@ -516,9 +527,11 @@ var openFile = function (event) {
 
         var dataURL = lector.result;
         var salida = document.getElementsByName('portada')[0];
-        
+        var file = document.getElementsByName('buscar')[0];
+
         salida.src = dataURL;
-        
+        //file.value = dataURL;
+
     };
     lector.readAsDataURL(input.files[0]);
 };
