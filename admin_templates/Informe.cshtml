@@ -62,8 +62,9 @@ var JSON = Json.Decode(inputs);
             string mes = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Substring(4,2);
             string dia = Convert.ToString(salida.ElementAt(i).Fecha_entrada).Substring(6);
             date = String.Format("{0}/{1}/{2}", dia, mes, anio);
+            string ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + salida.ElementAt(i).Portada.ToString();
             <tr>
-                <td><img alt="@salida.ElementAt(i).Portada" src="@salida.ElementAt(i).Portada" style="width: 150px;"/></td> 
+                <td><img alt="@salida.ElementAt(i).Portada" src="@ruta" style="width: 150px;"/></td> 
                 <td>@salida.ElementAt(i).Titulo</td> 
                 <td>@date</td> 
                 <td>@salida.ElementAt(i).Precio</td> 

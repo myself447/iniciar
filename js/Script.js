@@ -165,12 +165,14 @@ function upload(element) {
     var formData = new FormData();
 
     if ($("input[name=buscar]").val() != "") {
-        portada = document.getElementsByName('buscar')[0];
+        //portada = document.getElementsByName('buscar')[0];
+        formData.append("portada", document.getElementsByName('buscar')[0].files[0]);
     }
     else {
-        formData.append("portada", document.getElementsByName('portada')[0].src);
-
-        portada = "";
+        var nombre = document.getElementsByName('portada')[0].src.split("/");
+        var name = nombre[nombre.length-1];
+        formData.append("portada", name);
+       // portada = "";
         /*var reader = new FileReader();
         reader.onload = function (e) {
 
@@ -214,7 +216,7 @@ function upload(element) {
             for(var u = 0; u < toRemove.length; u++){ formData.append("toRemove",toRemove[u].innerHTML); }
         }
         formData.append("accion", element.value); 
-        if(portada.files!=undefined){formData.append("uploads[]", portada.files[0], portada.files[0].name);}
+        //if(portada.files!=undefined){formData.append("uploads[]", portada.files[0], portada.files[0].name);}
         for(var i=0;i<archivos.length-1;i++){
             var archivo = archivos[i];
             formData.append("uploads[]", archivo.files[0], archivo.files[0].name);
@@ -238,24 +240,16 @@ function upload(element) {
             if (client.readyState == 4 && client.status == 200) {
 
                 //alert(client.statusText + " Guardado! " + client.responseText);
-                 
+
                 var padre = document.getElementById('producto');
                 var hijos1 = document.querySelectorAll('#producto div:nth-child(7) ~ div');
                 for (var h = 0; h < hijos1.length; h++) { padre.removeChild(hijos1[h]); }
-                $("input[name=titulo]").val("");
                 $("img[name=portada]").attr("src", "../img/portada0.jpg");
-                $("input[name=precio]").val("");
-                $("input[name=ruta]").val("");
-                $("input[name=busqueda1]").val("");
+                document.getElementsByName('ruta')[0].setAttribute("value", "");
                 $("input[name=buscar]").val("");
-                $("#ref").val("");
-                $("#desc").val("");
                 document.getElementById('tabla').innerHTML = "";
-
-                /*var hijos2 = document.querySelectorAll('#producto input, #producto img, #producto textarea');
-                for(var h = 0; h < hijos2; h++){hijos2[h]}*/
-
-
+                document.getElementById('reset1').click();
+                if(element.value == "Actulizar Producto"){  document.getElementById('bt').click(); }
                 document.getElementById('up').style.display = "inline";
                 $('#up').fadeOut(2700, ver_ya());
             }
