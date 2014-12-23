@@ -4,14 +4,15 @@
     var current_id = "";
     var old_title = "";
     var archivos = Request.Files;
-    dynamic portada = ""; string covers = ""; 
+    dynamic portada = ""; string covers = "";
+    int choice = 1;
     string error ="";
     try{
        portada = Request.Files["portada"].FileName;
     }
     catch(Exception x){
        portada = Request.Form["portada"].ToString();
-        
+        choice = 0;
     }
     dynamic dir = null;
     var producto = new Dictionary<string, dynamic>(){ 
@@ -38,7 +39,8 @@
         id_producto = todb.GetLastInsertId().ToString(); 
         dir = Directory.CreateDirectory(Server.MapPath("/").ToString() + "Producto/" + producto["titulo"] + id_producto.ToString());
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
-        for( var i=1; i < Request.Files.Count; i++ ){
+
+        for( var i=choice; i < Request.Files.Count; i++ ){
 
               todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir.FullName.ToString() + "/" + archivos[i].FileName.ToString() + id_producto, id_producto));
 
@@ -56,7 +58,7 @@
             //var portada = archivos[0].FileName.ToString();
             archivos[0].SaveAs(Server.MapPath(@"../portadas/").ToString() + archivos[0].FileName.ToString());
            }
-            for( var i=1; i < Request.Files.Count; i++ ){
+            for( var i=choice; i < Request.Files.Count; i++ ){
 
                archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName);
                
@@ -85,7 +87,7 @@
         string exec = "insert into Grabaciones(Titulo, Archivo, Id_producto)values('{0}','{1}',{2})";
         dir = Server.MapPath("/").ToString() + "Producto/" + producto["titulo"] + current_id;
         
-        for( var i=1; i < Request.Files.Count; i++ ){
+        for( var i=choice; i < Request.Files.Count; i++ ){
 
               todb.Execute(String.Format(exec, archivos[i].FileName.ToString(), dir + "/" + archivos[i].FileName, current_id));
 
@@ -107,18 +109,19 @@
         try{
         FileInfo productos = new FileInfo(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         var files = productos.Directory.GetFiles();
-       /* if(Request.Form["toRemove"]!=null){
-        var toRemove = Request.Form["toRemove"].ToArray();
+       if(Request.Form["toRemove"]!=null){
+        var toRemove = Request.Form["toRemove"].Split(',');
         foreach(var remover in toRemove){
-        foreach(var file in files){
+            <text>@remover</text>
+       /* foreach(var file in files){
 
           if(file.Name.ToString() == remover.ToString()){
                 
                 file.Delete();
             }
+        } */
         }
         }
-        }*/
         }catch(Exception d){
             
             error = "Error eliminando archivos en actualizar producto\n" + d.Message.ToString();
@@ -128,17 +131,17 @@
 
         // Guardado de archivos inicia
       try{
-            if(covers==""){
+            if(choice==1){
             //var portada = archivos[0];
             archivos[0].SaveAs(Server.MapPath("../portadas/").ToString() + archivos[0].FileName.ToString());
             }
-            for( var i=1; i < Request.Files.Count; i++ ){
+            for( var i=choice; i < Request.Files.Count; i++ ){
 
-               archivos[i].SaveAs(dir.FullName.ToString() + "/" + archivos[i].FileName);
+               archivos[i].SaveAs(dir + "/" + archivos[i].FileName);
                <text>CORRO!!</text>
             }
         }catch(Exception f){
-            error = "Error Guardando archivos en actualizar producto"+ Environment.NewLine.ToString() + f.Message.ToString();
+            error = "Error Guardando archivos en actualizar producto" + Environment.NewLine.ToString() + f.Message.ToString();
            <text>@error</text>
 
         }

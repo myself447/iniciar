@@ -214,6 +214,7 @@ function upload(element) {
             formData.append("old_title", document.getElementById('current_id').getAttribute("itemref"));
             var toRemove = document.querySelectorAll("#current_id tr td:nth-child(1)");
             for(var u = 0; u < toRemove.length; u++){ formData.append("toRemove",toRemove[u].innerHTML); }
+            document.getElementById('current_id').innerHTML = "";
         }
         formData.append("accion", element.value); 
         //if(portada.files!=undefined){formData.append("uploads[]", portada.files[0], portada.files[0].name);}
@@ -249,9 +250,11 @@ function upload(element) {
                 $("input[name=buscar]").val("");
                 document.getElementById('tabla').innerHTML = "";
                 document.getElementById('reset1').click();
-                if(element.value == "Actulizar Producto"){  document.getElementById('bt').click(); }
+                if (element.value == "Actulizar Producto") { document.getElementById('bt').click(); }
                 document.getElementById('up').style.display = "inline";
                 $('#up').fadeOut(2700, ver_ya());
+                element.value = "Agregar Producto";
+                
             }
             else {
 
