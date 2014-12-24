@@ -9,14 +9,14 @@
     conexion.Close();
     dynamic[] data = new dynamic[records.Count()];
     data = records.ToArray();
+    string ruta = "";
+    ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + data.ElementAt(0).Portada.ToString();
 }
-
-
 <h1>Novedades</h1>
 
 <div class="row">
-    <div class="col-md-6">
-        <a href="Detalle?Id=@data.ElementAt(0).Id"><img src="@data.ElementAt(0).Portada" alt="Caratula" class="img-responsive" style="width: 345px; height: 260px;"/></a>
+    <div class="col-md-6"> 
+        <a href="Detalle?Id=@data.ElementAt(0).Id"><img src="@ruta" alt="Caratula" class="img-responsive" style="width: 345px; height: 260px;"/></a>
         
     </div>
     <div class="col-md-6">
@@ -37,10 +37,11 @@
 </div>
 <!--#########################################################################################-->
 @for(var i=1;i<4;i++){
+    ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + data.ElementAt(i).Portada.ToString();
 <div class="row fila" >
     <div class="col-md-6" style="padding:0px; margin:0px;">
         <div class="col-xs-7">
-            <a href="Detalle?Id=@data.ElementAt(i).Id"><img src="@data.ElementAt(i).Portada" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
+            <a href="Detalle?Id=@data.ElementAt(i).Id"><img src="@ruta" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
             <input value="@data.ElementAt(i).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>
@@ -58,11 +59,12 @@
     </div>
 
     @try{
+        ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + data.ElementAt(i+3).Portada.ToString();
         double precio = @data.ElementAt(i+3).Precio;
 
     <div class="col-md-6" style="padding:0px; margin:0px;">
         <div class="col-xs-7" >
-            <a href="Detalle?Id=@data.ElementAt(i+3).Id"><img src="@data.ElementAt(i+3).Portada" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
+            <a href="Detalle?Id=@data.ElementAt(i+3).Id"><img src="@ruta" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
             <input value="@data.ElementAt(i+3).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>

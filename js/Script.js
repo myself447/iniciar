@@ -274,6 +274,7 @@ function upload(element) {
 
 function consulta(){
     document.getElementById('por').style.display = "inline-block";
+    document.getElementById('informar2').innerHTML = "";
     document.getElementById('informar').innerHTML = "<div class='dropdown' id='menu1'> \
                                                           <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-expanded='true'> \
                                                             Seleccionar \
@@ -444,11 +445,11 @@ function ver_ya(){
 }
 
 function deleting(este){
-
     var con = new XMLHttpRequest();
     var id = este.parentNode.parentNode.children[4].innerHTML;
+    var titulo = este.parentNode.parentNode.children[1].innerHTML;
     //alert(id);
-    con.open("GET", "../admin_templates/CRUD.cshtml?id=" + id.toString() + "&concepto=borrar", true);
+    con.open("GET", "../admin_templates/CRUD.cshtml?id=" + id.toString() + "&concepto=borrar&titulo=" + titulo.toString(), true);
 
     con.onreadystatechange = function () {
 

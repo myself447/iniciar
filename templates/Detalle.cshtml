@@ -6,7 +6,7 @@
     string query = String.Format("select * from Producto where Id={0}",id);
     var record = conexion.QuerySingle(query);
     conexion.Close();
-
+    string ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + record.Portada.ToString();
 }
 
 
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <img src="@record.Portada" alt="Caratula" class="img-responsive" />
+        <img src="@ruta" alt="Caratula" class="img-responsive" />
         
     </div>
     <div class="col-md-6">

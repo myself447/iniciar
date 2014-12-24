@@ -6,7 +6,11 @@ var con = Database.Open("disco");
 var exec = "";
 switch(concepto){
     case "borrar":
-        exec = String.Format("delete from Producto where id={0}", id);
+        exec = String.Format("delete from Producto where id={0};", id); con.Execute(exec);
+        exec = String.Format("delete from Grabaciones where Id_producto={0}", id); con.Execute(exec);
+        var dir = new DirectoryInfo(Server.MapPath("/Producto/").ToString() + Request.QueryString["titulo"].ToString() + id.ToString());
+        dir.Delete(true);
+        //exec = String.Format("delete from Producto, Grabaciones where Producto.id={0} and Id", id);
     break;
 
     case "calificar":
@@ -23,7 +27,7 @@ switch(concepto){
 
         }
        
-        exec = String.Format("update Producto set Estrellas = {0} where id={1}", resultado, id);
+        exec = String.Format("update Producto set Estrellas = {0} where id={1}", resultado, id); con.Execute(exec);
     break;
 
     case "actualizar":
@@ -39,7 +43,7 @@ switch(concepto){
 
 }
 
-if(exec!=""){ con.Execute(exec); }
+//if(exec!=""){ con.Execute(exec); }
 con.Close();
 //<text>@id</text>
 }

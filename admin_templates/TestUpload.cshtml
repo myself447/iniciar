@@ -99,6 +99,11 @@
        } 
         // Guardado de datos finaliza
 
+        //Eliminado datos
+
+
+        // Eliminacion de datos
+
         // Eliminacion de archivos a sustituir
         var old_carpeta = old_title.ToString() + current_id.ToString();
         var new_carpeta = producto["titulo"] + current_id.ToString();
@@ -107,20 +112,23 @@
              }
         //var productos = Directory.GetFiles(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
         try{
-        FileInfo productos = new FileInfo(Server.MapPath("/").ToString() + "Producto/" + new_carpeta);
-        var files = productos.Directory.GetFiles();
+        DirectoryInfo productos = new DirectoryInfo(Server.MapPath("/Producto/").ToString()  + new_carpeta);
+        var files = productos.GetFiles();
        if(Request.Form["toRemove"]!=null){
+        var db = Database.Open("disco");
         var toRemove = Request.Form["toRemove"].Split(',');
         foreach(var remover in toRemove){
-            <text>@remover</text>
-       /* foreach(var file in files){
-
+            db.Execute(String.Format("delete from Grabaciones where Id_producto={0} and Titulo='{1}';", current_id, remover.ToString()));
+           // <strong>@remover :</strong><br /> <b>@files.Length.ToString()</b> <br /> <u>@productos</u> 
+        foreach(var file in files){
+           // <em>@file.Name.ToString()</em> <br />
           if(file.Name.ToString() == remover.ToString()){
-                
+                //<font color="blue">@file.Name.ToString()</font>
                 file.Delete();
             }
-        } */
+        } 
         }
+        db.Close();
         }
         }catch(Exception d){
             
