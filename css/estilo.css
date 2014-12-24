@@ -262,3 +262,8 @@ input[value="Busque Grabación"]{
     
     color: Gainsboro;
 }
+
+.play-list:hover{
+    
+    cursor: pointer;
+}

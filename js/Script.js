@@ -7,16 +7,24 @@ $('.rating').on('rating.change', function (event, value, caption) {
     else {
         var url = this.parentNode.parentNode.parentNode.children[0].href;
     }
-    var index = url.indexOf("=");
-    var id = url.substring(parseInt(index) + 1);
+    var index = "";
+    var id = "";
+    if (url != undefined) {
+        index = url.indexOf("=");
+        id = url.substring(parseInt(index) + 1);
+    } else {
+        index = location.href.indexOf("=");
+        id = location.href.substring(parseInt(index) + 1);
+    }
+  
     var con = new XMLHttpRequest();
     var get = "../admin_templates/CRUD.cshtml?id=" + id.toString() + "&concepto=calificar&calificacion=" + value.toString();
-    con.open("GET", get, true); alert("aqui");
+    con.open("GET", get, true); //alert("aqui");
     con.onreadystatechange = function () {
 
         if (con.readyState == 4 && con.status == 200) {
 
-            alert(con.status);
+            //alert(con.status);
         }
 
     }
@@ -424,8 +432,8 @@ function ver_ya(){
                 break;
 
             case "Título":
-
-            break;
+                //param["titulo"];
+                break;
 
             case "Precio":
 
@@ -533,3 +541,17 @@ var openFile = function (event) {
     };
     lector.readAsDataURL(input.files[0]);
 };
+function setVideo(este) {
+
+    document.getElementById('toPlay').src = este.parentNode.getAttribute("item");
+    document.getElementById('toPlay').parentNode.click();
+
+}
+/*function resetea(este){
+    if (este.poster == "") {
+        este.poster = "img/play2.png";
+    } else {
+    este.poster = "";
+    }
+
+}*/
