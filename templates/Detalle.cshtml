@@ -1,19 +1,19 @@
-﻿@{
-    
-    Layout = "../_Layout.cshtml";
-    var id = Request.QueryString["Id"];
-    var conexion = Database.Open("disco"); 
-    string query = String.Format("select * from Producto where Id={0}",id);
-    var record = conexion.QuerySingle(query);
-    conexion.Close();
-    string ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + record.Portada.ToString();
-    string carpeta = record.Titulo.ToString() + id.ToString();
-    var files = new DirectoryInfo(Server.MapPath("/Producto/").ToString() + carpeta);
-}
+﻿@using System.Net;
+@using System.Net.Mail;   
 
-
+@if(Request.QueryString["ajax"]==null){
+Layout = "../_Layout.cshtml";
+var id = Request.QueryString["Id"];
+var conexion = Database.Open("disco"); 
+string query = String.Format("select * from Producto where Id={0}",id);
+var record = conexion.QuerySingle(query);
+conexion.Close();
+string ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + record.Portada.ToString();
+string carpeta = record.Titulo.ToString() + id.ToString();
+var files = new DirectoryInfo(Server.MapPath("/Producto/").ToString() + carpeta);
+ 
 <h1>@record.Titulo</h1>
-
+<text>@IsAjax.ToString()</text>
 <div class="row">
     <div class="col-md-6">
         <img src="@ruta" alt="Caratula" class="img-responsive" />
@@ -37,17 +37,33 @@
 <div class="row">
     <div class="col-xs-6">
 
-         <video controls preload="auto" width="300" height="200" poster="img/play2.png" >
-                    <source id="toPlay" src="exito.wav" type='audio/wav'>
+         <video controls preload="auto" width="370" height="200" poster="img/play2.png" id="toPlay" src="exito.wav" type='audio/wav' >
+                   
          </video>
+        <form class="form-inline" style="margin-top: 50px;" id="f-amigo" >
+            <div class="form-group">
+            <fieldset><legend>ENVIAR A UN AMIGO</legend>
+                <table id="para-amigo">
+                    <tr><td>Tu nombre:</td><td><input type="text" class="form-control" id="tunombre"/></td></tr>
+                    <tr><td>Tu mail:</td><td><input type="email" class="form-control" id="tuemail" /></td></tr>
+                    <tr><td>Nombre amigo:</td><td><input type="text" class="form-control" id="sunombre"/></td></tr>
+                    <tr><td>Mail amigo:</td><td><input type="text" class="form-control" id="suemail" /></td></tr>
+                    <tr><td style="text-align: right;"><input type="checkbox" class="form-control" id="copia" /></td><td>Recibir una copia en mi e-mail</td></tr>
+                    <tr><td></td><td  style="text-align: right;" ><input type="submit" class="btn btn-default" value="Enviar" onclick="enviarAmigo(this);" /></td></tr>
+                </table>
+               
+            </fieldset>
+            </div>
+        </form>
     </div>
     <div class="col-xs-6">
         
-        <table class="table table-striped table-condensed" >
+        <table class="table table-striped table-condensed" id="file-list">
+            <caption style="font-style: oblique; font-size: medium; font-weight: bold;">Lista de Grabaciones</caption>
             @foreach(var file in files.GetFiles()){
             
                 <tr>
-                    <td>@file.Name</td>
+                    <td>@Path.GetFileNameWithoutExtension(file.Name)</td>
                     <td style="" item="Producto/@carpeta/@file.Name"><img src="img/play3.png" class="play-list" onclick="setVideo(this);"></td>
                 </tr>
                 
@@ -56,5 +72,38 @@
                
        </table>
 
+        
+
     </div>
 </div>
+            }else if(Request.QueryString["ajax"].ToString()=="enviar"){
+                
+    var tunombre = Request.QueryString["tunombre"].ToString();
+    var tuemail = Request.QueryString["tuemail"].ToString();
+    var sunombre = Request.QueryString["sunombre"].ToString();
+    var suemail = Request.QueryString["suemail"].ToString();
+    var copia = Request.QueryString["copia"].ToString();
+    var url = Request.QueryString["url"].ToString();
+    
+    var errorMessage = "";
+    var debuggingFlag = true;
+    try {
+         //Initialize WebMail helper
+        WebMail.SmtpServer = "smtp.gmail.com";
+        WebMail.SmtpPort = 587;
+        WebMail.UserName = "s3ndemail@gmail.com";
+        WebMail.Password = "s3ndemail23452345";
+        WebMail.From = tuemail;
+        WebMail.EnableSsl = true;
+        WebMail.SmtpUseDefaultCredentials = false;
+        // Send email
+        WebMail.Send(to: suemail, subject: "Chequea este DVD - " + sunombre, body: "Has click <a href='" + url + "'>Aqui</a> para ver la pagina la lista de grabaciones.");
+    }
+    catch (Exception ex ) {
+        errorMessage = ex.Message;
+        <text>@ex.GetBaseException()</text>
+    }
+
+            }else if(Request.QueryString["ajax"].ToString()=="comentarios"){}
+
+

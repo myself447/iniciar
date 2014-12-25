@@ -267,3 +267,16 @@ input[value="Busque Grabación"]{
     
     cursor: pointer;
 }
+
+#file-list{
+    
+    font-size: small;
+    max-width: 200px;
+    position: absolute;
+    right: 0px;
+}
+
+#para-amigo td:first-of-type{
+    
+    padding-right: 5px;
+}

@@ -544,8 +544,35 @@ var openFile = function (event) {
 function setVideo(este) {
 
     document.getElementById('toPlay').src = este.parentNode.getAttribute("item");
-    document.getElementById('toPlay').parentNode.click();
+    document.getElementById('toPlay').play();
 
+}
+
+function enviarAmigo(este){
+    var form = document.getElementById('f-amigo');
+    form.onsubmit = function (event) {
+
+        event.preventDefault();
+    }
+
+    var con = new XMLHttpRequest();
+    var tunombre = document.getElementById('tunombre').value;
+    var tuemail = document.getElementById('tuemail').value;
+    var sunombre = document.getElementById('sunombre').value;
+    var suemail = document.getElementById('suemail').value;
+    var copia = document.getElementById('copia').value;
+    var url = location.href.toString();
+    con.open("GET", "Detalle?Id=106&ajax=enviar&tunombre=" + tunombre + "&tuemail=" + tuemail + "&sunombre=" + sunombre + "&suemail=" + suemail + "&copia=" + copia + "&url=" + url, true);
+
+    con.onreadystatechange = function () {
+        if (con.readyState == 4 && con.status == 200) {
+
+            alert("Mensaje Enviado!");
+        }
+
+    }
+
+    con.send();
 }
 /*function resetea(este){
     if (este.poster == "") {

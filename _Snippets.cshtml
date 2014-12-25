@@ -602,3 +602,75 @@ clearButton: '<i class="glyphicon glyphicon-minus-sign"></i>',
 @* edit delete pointer *@
 
 tr td:nth-of-type(5) ~ td span:hover
+
+@* ways of sending emails *@
+
+ /* MailMessage mail = new MailMessage("s3ndemail@gmail.com","robert@engineer.com");
+
+
+        mail.From = new MailAddress("s3ndemail@gmail.com");
+        mail.Subject = "lo ksea"; 
+        string Body = "me da igual";
+        mail.Body = Body;
+
+        mail.IsBodyHtml = true;
+        SmtpClient smtp = new SmtpClient();
+        smtp.Host = "smtp.gmail.com"; 
+        smtp.Credentials = new System.Net.NetworkCredential
+      ("s3ndemail@gmail.com", "s3ndemail23452345");
+
+      smtp.Send(mail); */
+    
+
+/*SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 25);
+
+smtpClient.Credentials = new System.Net.NetworkCredential("s3ndemail@gmail.com", "s3ndemail23452345");
+smtpClient.UseDefaultCredentials = true;
+smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+smtpClient.EnableSsl = true;
+MailMessage mail = new MailMessage();
+
+//Setting From , To and CC
+mail.From = new MailAddress("s3ndemail@gmail.com", "MyWeb Site");
+mail.To.Add(new MailAddress("robert@engineer.com"));
+mail.CC.Add(new MailAddress("s3ndemail@gmail.com"));
+
+smtpClient.Send(mail);*/
+
+ /*   //create the mail message
+MailMessage mail = new MailMessage();
+
+//set the addresses
+mail.From = new MailAddress("s3ndemail@gmail.com");
+mail.To.Add("robert@engineer.com");
+
+//set the content
+mail.Subject = "This is an email";
+mail.Body = "this is a sample body";
+
+//send the message
+SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+smtp.Send(mail);*/
+
+    /*var fromA = new MailAddress("s3ndemail@gmail.com","From: " + tuemail.ToString());
+    var toA = new MailAddress(suemail.ToString(), "To: " + sunombre.ToString());
+    string clave = "s3ndemail23452345";
+    string subject = "Chequea este DVD - " + sunombre.ToString();
+    string body = "Chequea la lista de grabaciones aqui";
+
+    var smtp = new SmtpClient{
+        Host = "smtp.gmail.com",
+        Port = 587,
+        EnableSsl = true,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //UseDefaultCredentials = false,
+        Credentials = new NetworkCredential(fromA.Address, clave),
+        Timeout = 20000
+
+    };
+    using(var message = new MailMessage(fromA, toA){
+        
+        Subject = subject,
+        Body = body
+
+    }){  smtp.Send(message);  } */
