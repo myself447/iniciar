@@ -562,7 +562,7 @@ function enviarAmigo(este){
     var suemail = document.getElementById('suemail').value;
     var copia = document.getElementById('copia').value;
     var url = location.href.toString();
-    con.open("GET", "Detalle?Id=106&ajax=enviar&tunombre=" + tunombre + "&tuemail=" + tuemail + "&sunombre=" + sunombre + "&suemail=" + suemail + "&copia=" + copia + "&url=" + url, true);
+    con.open("GET", location.href.toString() + "&ajax=enviar&tunombre=" + tunombre + "&tuemail=" + tuemail + "&sunombre=" + sunombre + "&suemail=" + suemail + "&copia=" + copia + "&url=" + url, true);
 
     con.onreadystatechange = function () {
         if (con.readyState == 4 && con.status == 200) {
@@ -574,11 +574,62 @@ function enviarAmigo(este){
 
     con.send();
 }
-/*function resetea(este){
-    if (este.poster == "") {
-        este.poster = "img/play2.png";
-    } else {
-    este.poster = "";
+
+function comentarios(este){
+
+    var con = new XMLHttpRequest();
+
+    con.open("GET", location.href.toString() + "&ajax=comentarios", true);
+
+    con.onreadystatechange = function () {
+
+        if (con.status == 200 && con.readyState == 4) {
+            var relleno = new DOMParser();
+            var html = relleno.parseFromString(con.responseText, "text/html");
+            document.getElementById("comments").innerHTML = con.responseText;
+        }
     }
 
-}*/
+    con.send(null);
+}
+
+function negar(){
+    
+    if(document.getElementById('acoment').getAttribute("itemref")=="0"){
+        document.getElementById('acoment').innerHTML = "<table> \
+                                                            <tr><td><input type='email' class='form-control' placeholder='miemail@ejemplo.com' id='cmail' /></td></tr>        \
+                                                            <tr><td><textarea id='comentario' placeholder='Entre su comentario' style='width: 500px; height: 90px;' class='form-control'></textarea></td></tr> \
+                                                            <tr><td><input type='submit' value='Comentar' onclick='comentar();' class='btn btn-default' /></td></tr> \
+                                                        </table>"; 
+        document.getElementById('acoment').setAttribute("itemref", "1"); //alert("# uno");
+    }else{
+        document.getElementById('acoment').innerHTML="";  //alert("# dos");
+        document.getElementById('acoment').setAttribute("itemref", "0");
+    }
+    
+}
+
+function comentar(){
+    var form = document.getElementById('acoment');
+    form.onsubmit = function (event) {
+
+        event.preventDefault();
+    }
+
+    var con = new XMLHttpRequest();
+    var comentario = document.getElementById('comentario').value;
+    var mail = document.getElementById('cmail').value;
+    con.open("GET", location.href.toString() + "&ajax=comentar&comentario=" + comentario.toString() + "&cmail=" + mail.toString(), true);
+
+    con.onreadystatechange = function () {
+
+        if (con.status == 200 && con.readyState == 4) {
+
+            //alert("done");
+            document.querySelector("input[onclick='negar();']").click();
+            document.querySelector('input[onclick="comentarios(this);"]').click();
+
+        }
+    }
+    con.send();
+}

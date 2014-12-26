@@ -15,7 +15,7 @@ var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comenta
 
  
 <h1>@record.Titulo</h1>
-<text>@IsAjax.ToString()</text>
+
 <div class="row">
     <div class="col-md-6">
         <img src="@ruta" alt="Caratula" class="img-responsive" />
@@ -28,7 +28,7 @@ var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comenta
                 
                 <p>@record.Referencia</p>
                 <p>@record.Descripcion</p>
-                <p>#@n_coments[0] Comentarios</p>
+                <input type="button" class="btn btn-link" onclick="comentarios(this);" style="font-weight: bold; font-size: medium;" value="@n_coments[0] Comentarios" />
                 @*<p>@record.Precio$ <span class="carrito btn btn-default btn-xs"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>*@
                 <p>@record.Precio$ <span class="carrito btn btn-default btn-xs" name="@record.Id"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>
                 <span name="@String.Format("{0}{1}",record.Id,record.Id)" hidden>@MyHelpers.PaypalButton(record.Titulo, (float)record.Precio)</span>
@@ -78,6 +78,13 @@ var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comenta
 
     </div>
 </div>
+<div class="row">
+    <table id="comments" class="table">
+    </table>
+    <form style="margin-top: 30px;" id="acoment" itemref="0" >
+                      
+                    </form>
+</div>
             }else if(Request.QueryString["ajax"].ToString()=="enviar"){
                 
     var tunombre = Request.QueryString["tunombre"].ToString();
@@ -106,6 +113,42 @@ var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comenta
         <text>@ex.GetBaseException()</text>
     }
 
-            }else if(Request.QueryString["ajax"].ToString()=="comentarios"){}
+            }else if(Request.QueryString["ajax"].ToString()=="comentarios"){
+                
+
+                var con = Database.Open("disco");
+
+                var comments = con.Query(String.Format("select * from Comentario where Id_producto={0} order by Id desc;", Request.QueryString["Id"]));
+
+                /*var tabla = new WebGrid(comments);
+                <text>@tabla.GetHtml()</text>*/
+                
+                    <caption style="font-style: oblique; font-weight: bold; margin-bottom: 20px;">COMENTARIOS</caption>
+                    foreach(var comment in comments){
+                        string anio = Convert.ToString(comment.Fecha).Remove(4);
+                        string mes = Convert.ToString(comment.Fecha).Substring(4,2);
+                        string dia = Convert.ToString(comment.Fecha).Substring(6);
+                        var date = String.Format("{0}/{1}/{2}", dia, mes, anio);
+
+                        <tr><td>@date</td></tr>
+                        <tr><td>@comment.Email</td></tr>
+                        <tr><td>@comment.Descripcion</td></tr>
+                        <tr><td> <br /><br /> </td></tr>
+                    }
+                    
+                    <input type="button" class="btn btn-link" onclick="negar();" style="font-weight: bold; margin-top: 30px;" value="¿ Quieres añadir un comentario ?" />
+                    
+                
+            }else if(Request.QueryString["ajax"].ToString()=="comentar"){
+                
+                var fecha = DateTime.Now;
+                var cfecha = Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString() );
+                var mail = Request.QueryString["cmail"];
+                var comentario = Request.QueryString["comentario"];
+                var id = Request.QueryString["Id"];
+                var con = Database.Open("disco");      
+                con.Execute(String.Format("insert into Comentario(Id_producto, Email, Descripcion, Fecha)values({0}, '{1}', '{2}', {3});", id, mail, comentario, cfecha));
+
+            }
 
 
