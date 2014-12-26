@@ -11,6 +11,8 @@ conexion.Close();
 string ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + record.Portada.ToString();
 string carpeta = record.Titulo.ToString() + id.ToString();
 var files = new DirectoryInfo(Server.MapPath("/Producto/").ToString() + carpeta);
+var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", id));
+
  
 <h1>@record.Titulo</h1>
 <text>@IsAjax.ToString()</text>
@@ -26,7 +28,7 @@ var files = new DirectoryInfo(Server.MapPath("/Producto/").ToString() + carpeta)
                 
                 <p>@record.Referencia</p>
                 <p>@record.Descripcion</p>
-                <p># Comentarios</p>
+                <p>#@n_coments[0] Comentarios</p>
                 @*<p>@record.Precio$ <span class="carrito btn btn-default btn-xs"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>*@
                 <p>@record.Precio$ <span class="carrito btn btn-default btn-xs" name="@record.Id"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>
                 <span name="@String.Format("{0}{1}",record.Id,record.Id)" hidden>@MyHelpers.PaypalButton(record.Titulo, (float)record.Precio)</span>
