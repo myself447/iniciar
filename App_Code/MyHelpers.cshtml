@@ -36,7 +36,7 @@
 
 @functions{
    public static HtmlString PaypalButton(string producto, float precio){
-    var payPalButton = PayPal.ButtonManager.AddToCartButton.Create( business : "robert-facilitator@engineer.com ",
+    var payPalButton = PayPal.ButtonManager.AddToCartButton.Create( business : "robert.ranyeli-facilitator@gmail.com",
                                                                     itemName : producto, 
                                                                      amount : precio.ToString()); 
     HtmlString payPalButtonHtml = new HtmlString(payPalButton.WebSiteCode);

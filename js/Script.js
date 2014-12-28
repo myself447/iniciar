@@ -81,12 +81,16 @@ $('.datepicker').pikaday({ firstDay: 1 });
 
 
 function informes() {
-    var selection = document.getElementById('dropdownMenu1').childNodes[0].nodeValue;
+    var consulta = $('#rConsulta').prop('checked'); var reporte = $('#rReporte').prop('checked');
+    var selection = null;
+    if (consulta == true) {
+         selection = document.getElementById('dropdownMenu1').childNodes[0].nodeValue;
+    }
     var inputs = document.querySelectorAll("#informar2 input");
     var input = {};
     for(var i=0;i<inputs.length-1;i++){  input[String.fromCharCode(i+97)] = inputs[i].value;  }
 
-    var consulta = $('#rConsulta').prop('checked'); var reporte = $('#rReporte').prop('checked');
+   
     $.ajax({
         type: "GET",
         url: "admin_templates/Informe.cshtml",
@@ -318,6 +322,7 @@ function reporte(mi){
                     " + '<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />' + " \
                 </div> \
             </div>";
+            $('.datepicker').pikaday({ firstDay: 1 });
 }
 
 function selected(mi){
