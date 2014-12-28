@@ -6,9 +6,25 @@
     var query = String.Format("select * from Acceso where Usuario='{0}' and Clave='{1}'",usuario,clave);
     var datos = con.QuerySingle(query);
     con.Close();
+    /*var papa = new PayPal.AdaptivePayments.AdaptivePayments();
+    var pay = new PayPal.AdaptivePayments.ExecutePaymentRequest();
+    var paga = new PayPal.AdaptivePayments.PayRequest();
+    var otra = new PayPal.AdaptivePayments.ExecutePaymentResponse();
+    var me = new PayPal.AdaptivePayments.PayResponse();
+    var client = new PayPal.AdaptivePayments.ClientDetailsType();
+    var ex = new PayPal.AdaptivePayments.ChainedPay();
+    var option = new PayPal.AdaptivePayments.SetPaymentOptionsRequest();*/
+    
+    
+    
+    /*var bye = PayPal.ButtonManager.BuyNowButton.Create(business : "robert.ranyeli-facilitator@gmail.com",
+                                                                    itemName : "JUGO", 
+                                                                     amount : "3025");
+    var ht = new HtmlString(bye.WebSiteCode);*/
 }
 
 @if(datos!=null){
+    
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
     <div class="row">                                                                                                                                                                                                                                                                                                              
     <div class="col-xs-4">
@@ -74,7 +90,7 @@
                         <label for="rConsulta" class="css-label radGroup2">Consulta</label>
                     </span>
                     <span>
-                        <input name="radiog_dark" id="rReporte" class="css-checkbox" checked="checked" name="informe" type="radio" onclick="reporte();">
+                        <input name="radiog_dark" id="rReporte" class="css-checkbox" checked="checked" name="informe" type="radio" onnothing="reporte();" onclick="document.getElementById('paypal').click(); reporte();">
                         <label for="rReporte" class="css-label radGroup2">Reporte</label>
                     </span>
                     <span style="font-size: 1.5em; font-weight: bold; margin-left: 10px; margin-right: 5px; display: none;" id="por">Por</span>
@@ -82,6 +98,7 @@
                     
                 
             </div>
+             <a href="https://www.sandbox.paypal.com/us/webapps/mpp/home-merchant" id="paypal" target="_blank" hidden></a>
             <div class="panel-heading" id="info2">
                 <span id="informar2" style=""></span>
                 <!--<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" style="display: none; " />-->
@@ -89,7 +106,7 @@
             <div class="panel-body" id="informe">
                 conenido
             </div>
-            <div class="panel-footer">totales</div>
+            <div class="panel-footer"><!--totales--></div>
         </div>
     </div>
     <!--new col-->

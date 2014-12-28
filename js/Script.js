@@ -306,7 +306,7 @@ function reporte(mi){
 
     document.getElementById('por').style.display = "none";
     document.getElementById('informar').innerHTML = "";
-    document.getElementById('informar2').innerHTML = "\
+    /*document.getElementById('informar2').innerHTML = "\
             <div class='row' style=''> \
                 <div class='col-xs-5'>\
                     <div class=input-group>\
@@ -321,7 +321,7 @@ function reporte(mi){
                 <div class='col-xs-2'> \
                     " + '<input type="button" class="btn btn-default btn-md" id="bt" value="Ver" onclick="informes();" style="display:inline-block;" />' + " \
                 </div> \
-            </div>";
+            </div>";*/
             $('.datepicker').pikaday({ firstDay: 1 });
 }
 
