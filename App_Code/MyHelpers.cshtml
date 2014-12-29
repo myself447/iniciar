@@ -10,11 +10,11 @@
 }
 
 
-@helper Paginado(int desde,int hasta,int pag,int paginaI, float paginaF,int limite){
+@helper Paginado(int desde,int hasta,int pag,int paginaI, float paginaF,int limite, string extra){
 
 <div class="paginado">
     @if(paginaI!=1){
-    <a href="Listado?pagina=@(paginaI-1)">Anterior |</a>
+    <a href="@String.Format("Listado?pagina={0}{1}", (paginaI-1), extra)">Anterior |</a>
         }
     @for(var i=desde;i<=hasta+pag;i++){ 
         
@@ -23,12 +23,12 @@
             m=(int)m*5; 
             m=m+i; 
             
-            if(paginaI==m){<a href="Listado?pagina=@m" style="color: #ff006e" >@m | </a>}
-            else{ <a href="Listado?pagina=@m">@m | </a> }
+            if(paginaI==m){<a href="@String.Format("Listado?pagina={0}{1}", m, extra)" style="color: #ff006e" >@m | </a>}
+            else{ <a href="@String.Format("Listado?pagina={0}{1}", m, extra)">@m | </a> }
      if(limite<m*8){break;}                                                   
      } 
     @if(paginaI*8<limite){
-    <a href="Listado?pagina=@(paginaI+1)">Siguiente</a>
+    <a href="@String.Format("Listado?pagina={0}{1}", (paginaI+1), extra)">Siguiente</a>
     }
 </div>
 

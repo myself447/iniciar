@@ -41,8 +41,12 @@ switch(concepto){
         
     break;
 
-    case "":
-
+    case "subscribir":
+        var email = Request.QueryString["email"].ToString();
+        var fecha = DateTime.Now;
+        var date = Convert.ToInt64(fecha.Year.ToString() + fecha.Month.ToString() + fecha.Day.ToString());
+        con.Execute(String.Format("insert into Suscritos(Fecha, Email)values({0}, '{1}')", date, email));
+        
     break;
 
 }

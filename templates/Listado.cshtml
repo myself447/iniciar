@@ -4,10 +4,21 @@
     var conexion = Database.Open("disco"); 
     var pagina = Request.QueryString["pagina"];
     var offset=7;
-    if(pagina.AsInt()!=1){ offset=(pagina.AsInt()*4)+7; } 
-    string query = String.Format("select * from Producto order by Id desc offset {0} rows fetch next 8 rows only",offset);
+    var where = "";
+    var extra = "";
+
+    if(Request.QueryString["buscar"]!=null){
+        string buscar = Request.QueryString["buscar"].ToString();
+        offset = 0;
+        where = "where Titulo like '%" + buscar + "%'";
+        extra = "&buscar=" + buscar;
+    }
+
+    if(pagina.AsInt()!=1){ offset=(pagina.AsInt()*4) + offset; } 
+    
+    string query = String.Format("select * from Producto " + where + " order by Id desc offset {0} rows fetch next 8 rows only", offset);
     var records = conexion.Query(query);
-    var num = conexion.QuerySingle("select COUNT(*) from Producto");
+    var num = conexion.QuerySingle("select COUNT(*) from Producto " + where);
     int limite=num[0]-7;
     conexion.Close();
     dynamic[] lista = new dynamic[records.Count()];
@@ -26,7 +37,7 @@
 
 
 
-@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite)
+@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite, extra)
 
 @for(var i=0;i<Math.Round(lista.Count()/2.0);i++){
     ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + lista.ElementAt(i).Portada.ToString();
@@ -75,6 +86,6 @@
 
 </div>
 }
-@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite)
+@MyHelpers.Paginado(desde,hasta,pag,paginaI,paginaF,limite, extra)
 <!--#########################################################################################-->
 

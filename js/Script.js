@@ -638,3 +638,36 @@ function comentar(){
     }
     con.send();
 }
+
+function subscribir(){
+
+    var form = document.getElementById('subscripcion');
+    var email = document.getElementById('subscriptor').value;
+
+    form.onsubmit = function (event) {
+
+        event.preventDefault();
+    }
+
+    var con = new XMLHttpRequest();
+
+    con.open("GET", "../admin_templates/CRUD.cshtml?concepto=subscribir&email=" + email.toString(), true);
+
+    con.onreadystatechange = function () {
+
+        if (con.status == 200 && con.readyState == 4) {
+
+            alert(con.status);
+            document.getElementById('subscriptor').value = "";
+
+        }
+
+    }
+    con.send();
+}
+
+function busqueda(){
+    var pattern = document.getElementById('buscar-disco').value;
+    location.href = "Listado?pagina=1&buscar=" + pattern.toString();
+    //location.assign("Listado?pagina=1");
+}

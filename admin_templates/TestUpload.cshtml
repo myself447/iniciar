@@ -160,6 +160,30 @@
 
 
 @{
+    
+    var pre_subject = accion.Replace("ar", "ado").Split(' ');
+    var subject = pre_subject[1].ToString() + " " + pre_subject[0].ToString();
+
+    var susbcritos = Database.Open("disco");
+    var emails = susbcritos.Query("select * from Suscritos");
+
+    WebMail.SmtpServer = "smtp.gmail.com";
+        WebMail.SmtpPort = 587;
+        WebMail.UserName = "s3ndemail@gmail.com";
+        WebMail.Password = "s3ndemail23452345";
+        WebMail.From = "s3ndemail@gmail.com";
+        WebMail.EnableSsl = true;
+        WebMail.SmtpUseDefaultCredentials = false;
+        
+        var theurl = Request.Url.Authority.ToString() + "/Detalle?Id=" + current_id.ToString();
+    foreach(var email in emails){
+        
+        
+        // Send email
+        WebMail.Send(to: email.Email, subject: subject.ToString(), body: "Mira que hay de nuevo en el disco '" + producto["titulo"] + "' haciendo click <a href='" + theurl.ToString() + "'>aqui</a>");
+   
+    }
+
 /*text>@DateTime.Now.ToFileTime()</text>
 <text>@DateTime.FromFileTime(DateTime.Now.ToFileTime()).ToShortDateString()</text>      
 
