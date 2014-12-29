@@ -12,6 +12,7 @@
     string ruta = "";
     ruta = "http://" + Request.Url.Authority.ToString() + "/portadas/" + data.ElementAt(0).Portada.ToString();
     //var n_coments = conexion.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", id));
+    var con = Database.Open("disco");
 }
 <h1>Novedades</h1>
 
@@ -24,12 +25,12 @@
         <div class="detalle">
             <br />
             
-                
+                @{  var n_coments = con.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", data.ElementAt(0).Id)); }
                 <p>@data.ElementAt(0).Referencia</p>
                 <p>@data.ElementAt(0).Titulo</p>
                 <p>@data.ElementAt(0).Descripcion</p>
                 @*<p>@data.ElementAt(0).Estrellas</p>*@
-                <p># Comentarios</p>
+                <p>@n_coments[0] Comentarios</p>
                 <p>@data.ElementAt(0).Precio$ <span class="carrito btn btn-default btn-xs" name="@data.ElementAt(0).Id"><img src="img/cart.png" alt="carrito" />Comprar</span> </p>
                 <span name="@String.Format("{0}{1}",data.ElementAt(0).Id,data.ElementAt(0).Id)" hidden>@MyHelpers.PaypalButton(data.ElementAt(0).Titulo, (float)data.ElementAt(0).Precio)</span>
                 <input value="@data.ElementAt(0).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="sm" data-stars="5" data-glyphicon=0>
@@ -46,14 +47,14 @@
             <input value="@data.ElementAt(i).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>
-        
+        @{ n_coments = con.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", data.ElementAt(i).Id)); }
         <div class="col-xs-5">
             @data.ElementAt(i).Referencia<br />
             @data.ElementAt(i).Titulo <br />
             @data.ElementAt(i).Precio$ <span class="carrito btn btn-default btn-xs" name="@data.ElementAt(i).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
             <span name="@String.Format("{0}{1}",data.ElementAt(i).Id,data.ElementAt(i).Id)" hidden>@MyHelpers.PaypalButton(data.ElementAt(i).Titulo, (float)data.ElementAt(i).Precio)</span>
 
-            # Comentarios
+            @n_coments[0] Comentarios
         </div>
         
         
@@ -69,6 +70,8 @@
             <input value="@data.ElementAt(i+3).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>
+
+        @{ n_coments = con.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", data.ElementAt(i+3).Id)); }
      <!--delete--> 
         <div class="col-xs-5">
             @data.ElementAt(i+3).Referencia<br />
@@ -76,7 +79,7 @@
             @precio$ <span class="carrito btn btn-default btn-xs" name="@data.ElementAt(i+3).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
             <span name="@String.Format("{0}{1}",data.ElementAt(i+3).Id,data.ElementAt(i+3).Id)" hidden>@MyHelpers.PaypalButton(data.ElementAt(i+3).Titulo, (float)data.ElementAt(i+3).Precio)</span>
 
-             # Comentarios
+             @n_coments[0] Comentarios
         </div>
     </div>
 

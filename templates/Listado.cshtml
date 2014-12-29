@@ -31,6 +31,9 @@
     var mantisa = ((paginaF/5)-(paginaI/5));
     if( mantisa==0.0f && paginaI!=1){desde=-1; pag=-1;}
     string ruta = "";
+
+    var con = Database.Open("disco");
+    var n_coments = con.QuerySingle("select COUNT(*) from Comentario where Id_producto=0;");
     }
 <!--#########################################################################################-->
 <p>registros: @limite</p>
@@ -47,13 +50,13 @@
             <a href="Detalle?Id=@lista.ElementAt(i).Id"><img src="@ruta" alt="Caratula" class="img-responsive" style="width: 200px; height: 151px;" /></a>
             <input value="@lista.ElementAt(i).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-left' data-size="xs" data-stars="5" data-glyphicon=0>
         </div>
-        
+         @{n_coments = con.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", lista.ElementAt(i).Id)); } 
         <div class="col-xs-5">
             @lista.ElementAt(i).Referencia<br />
             @lista.ElementAt(i).Titulo <br />
             @lista.ElementAt(i).Precio$ <span class="carrito btn btn-default btn-xs" name="@lista.ElementAt(i).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
             <span name="@String.Format("{0}{1}",lista.ElementAt(i).Id,lista.ElementAt(i).Id)" hidden>@MyHelpers.PaypalButton(lista.ElementAt(i).Titulo, (float)lista.ElementAt(i).Precio)</span>
-            # Comentarios
+            @n_coments[0] Comentarios
         </div>
         
         
@@ -69,13 +72,13 @@
             <input value="@lista.ElementAt(i+j).Estrellas" type="number" class="rating" style="" min="0" max="5" step=0.5 data-container-class='text-right' data-size="xs" data-stars="5" data-glyphicon=0>
             
         </div>
-        
+        @{n_coments = con.QuerySingle(String.Format("select COUNT(*) from Comentario where Id_producto={0};", lista.ElementAt(i+j).Id)); }
         <div class="col-xs-5">
             @lista.ElementAt(i+j).Referencia<br />
             @lista.ElementAt(i+j).Titulo <br />
             @precio<text>$</text> <span class="carrito btn btn-default btn-xs" name="@lista.ElementAt(i+j).Id"><img src="img/cart.png" alt="carrito" />Comprar</span>  <br />
             <span name="@String.Format("{0}{1}",lista.ElementAt(i+j).Id,lista.ElementAt(i+j).Id)" hidden>@MyHelpers.PaypalButton(lista.ElementAt(i+j).Titulo, (float)lista.ElementAt(i+j).Precio)</span>
-            <text> # Comentarios</text><br />
+            <text> @n_coments[0] Comentarios</text><br />
             
         </div>
     </div>
